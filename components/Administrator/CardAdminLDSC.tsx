@@ -4,9 +4,11 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Alert } from '@gluestack-ui/themed';
 import { InfoIcon } from '@gluestack-ui/themed';
+import { useNavigation } from '@react-navigation/native';
 
 const CardAdminLDSC = ({ data }) => {
     const [token, setToken] = useState(null);
+    const navigation =useNavigation();
 
     useEffect(() => {
       const fetchToken = async () => {
@@ -37,6 +39,8 @@ const CardAdminLDSC = ({ data }) => {
                 }
               );
           console.log(response);
+          navigation.navigate('Movies');
+
         }
       } catch (error) {
         console.error('Error al eliminar el idioma:', error);
