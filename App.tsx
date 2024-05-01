@@ -11,6 +11,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Image } from '@gluestack-ui/themed';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import Manage_Languages from './components/Languages/Manage_Languages';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -22,6 +23,7 @@ function Root() {
     <Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />}>
       <Drawer.Screen name="Movies" component={Movies} />
       <Drawer.Screen name="Movie_store" component={Movie_store} />
+      <Drawer.Screen name="Manage_Languages" component={Manage_Languages} />
     </Drawer.Navigator>
   );
 }
@@ -56,6 +58,17 @@ const CustomDrawerContent = ({ navigation }) => (
       </TouchableOpacity>
     </Box>
 
+    <Box backgroundColor='$secondary200' borderRadius={'$xl'} marginBottom={8}>
+      <TouchableOpacity onPress={() => navigation.navigate('Manage_Languages')}>
+        <Text fontSize={'$xl'} padding={13} >Manage Languages</Text>
+      </TouchableOpacity>
+    </Box>
+    
+    <Box backgroundColor='$secondary200' borderRadius={'$xl'} marginBottom={8}>
+      <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+        <Text fontSize={'$xl'} padding={13} >Logout</Text>
+      </TouchableOpacity>
+    </Box>
 
   </Box>
 );

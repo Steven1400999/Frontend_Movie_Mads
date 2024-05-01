@@ -10,7 +10,8 @@ const Card_Movies = ({ movie }) => {
         size="2xl"  
          borderRadius="$2xl"
           objectFit='cover'
-           source={{uri: movie.image}} 
+           source={{uri: movie.image}}
+           alt={movie.title} 
            />
       </Box>
     </Card>

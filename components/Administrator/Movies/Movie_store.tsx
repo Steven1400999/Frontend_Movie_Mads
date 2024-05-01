@@ -26,7 +26,11 @@ const Movie_store = () => {
     const [languages, setLanguages] = useState([]);
     const [subtitles, setSubtitles] = useState([]);
     const navigation = useNavigation();
-    const [selectedImage, setSelectedImage] = useState(null); 
+    const [selectedImage, setSelectedImage] = useState(null);
+    const [selectedCategory, setSelectedCategory] = useState(null);
+    const [selectedDubbing, setSelectedDubbing] = useState(null);
+    const [selectedLanguage, setSelectedLanguage] = useState(null);
+    const [selectedSubtitle, setSelectedSubtitle] = useState(null);
 
 
     useEffect(() => {
@@ -133,7 +137,7 @@ const Movie_store = () => {
         getsubtitles();
 
     }, []);
-    
+
 
     const onSubmit = async () => {
         try {
@@ -197,10 +201,10 @@ const Movie_store = () => {
                     <Text color="white" size="xl" textAlign="justify">Title</Text>
                     <Input variant="outline" size="md" isDisabled={false}>
                         <InputField id='title' type="text" placeholder="Title" color="white"
-                         onChangeText={value => setFormData({
-                            ...formData,
-                            title: value
-                        })} />
+                            onChangeText={value => setFormData({
+                                ...formData,
+                                title: value
+                            })} />
 
                     </Input>
                 </Box>
@@ -209,7 +213,7 @@ const Movie_store = () => {
                 <Box mt="$5" marginTop="$5" width="80%">
                     <Text color="white" size="xl" textAlign="justify">Description</Text>
                     <Input variant="outline" size="md" isDisabled={false}>
-                        <InputField  id='description' type="text" placeholder="Description" color="white" onChangeText={value => setFormData({
+                        <InputField id='description' type="text" placeholder="Description" color="white" onChangeText={value => setFormData({
                             ...formData,
                             description: value
                         })} />
@@ -230,13 +234,15 @@ const Movie_store = () => {
 
                 <Box mt="$5" marginTop="$5" width="80%">
                     <Text color="white" size="xl" textAlign="justify">Category</Text>
-                    <FormControl isRequired isInvalid>
+                    <FormControl isRequired={!selectedCategory} isInvalid={!selectedCategory}>
                         <FormControlLabel>
                             <FormControlLabelText color='$secondary200'>
                                 Choose the category of the movie
                             </FormControlLabelText>
                         </FormControlLabel>
-                        <Select onValueChange={(value) => setFormData({ ...formData, category_id: value })}>
+                        <Select onValueChange={(value) => {setFormData({ ...formData, category_id: value });
+                      setSelectedCategory(value);
+                      }}>
                             <SelectTrigger>
                                 <SelectInput color='white' placeholder="Select option" />
 
@@ -270,13 +276,18 @@ const Movie_store = () => {
 
                 <Box mt="$5" marginTop="$5" width="80%">
                     <Text color="white" size="xl" textAlign="justify">Language</Text>
-                    <FormControl isRequired isInvalid>
+                    <FormControl isRequired={!selectedLanguage} isInvalid={!selectedLanguage}>
                         <FormControlLabel>
                             <FormControlLabelText color='$secondary200'>
                                 Choose the language of the movie
                             </FormControlLabelText>
                         </FormControlLabel>
-                        <Select onValueChange={(value) => setFormData({ ...formData, language_id: value })}>
+                        <Select onValueChange={(value) => {
+                            setFormData({ ...formData, language_id: value });
+                            setSelectedLanguage(value);
+
+                        }}
+                        >
                             <SelectTrigger>
                                 <SelectInput color='white' placeholder="Select option" />
 
@@ -311,13 +322,17 @@ const Movie_store = () => {
 
                 <Box mt="$5" marginTop="$5" width="80%">
                     <Text color="white" size="xl" textAlign="justify">Dubbing</Text>
-                    <FormControl isRequired isInvalid>
+                    <FormControl isRequired={!selectedDubbing} isInvalid={!selectedDubbing}>
                         <FormControlLabel>
                             <FormControlLabelText color='$secondary200'>
                                 Choose the dubbing of the movie
                             </FormControlLabelText>
                         </FormControlLabel>
-                        <Select onValueChange={(value) => setFormData({ ...formData, dubbing_id: value })}>
+                        <Select onValueChange={(value) => {
+                            setFormData({ ...formData, dubbing_id: value });
+                        setSelectedDubbing(value);
+                    
+                        }}>
                             <SelectTrigger>
                                 <SelectInput color='white' placeholder="Select option" />
 
@@ -351,13 +366,20 @@ const Movie_store = () => {
 
                 <Box mt="$5" marginTop="$5" width="80%">
                     <Text color="white" size="xl" textAlign="justify">Subtitle</Text>
-                    <FormControl isRequired isInvalid>
+                    <FormControl isRequired={!selectedSubtitle} isInvalid={!selectedSubtitle}>
                         <FormControlLabel>
                             <FormControlLabelText color='$secondary200'>
                                 Choose the subtitle of the movie
                             </FormControlLabelText>
                         </FormControlLabel>
-                        <Select onValueChange={(value) => setFormData({ ...formData, subtitle_id: value })}>
+                        <Select onValueChange={(value) =>{ 
+                            
+                            setFormData({ ...formData, subtitle_id: value });
+                    setSelectedSubtitle(value);
+                    
+                    
+                    
+                    }}>
                             <SelectTrigger>
                                 <SelectInput color='white' placeholder="Select option" />
 
@@ -391,7 +413,7 @@ const Movie_store = () => {
                 <Box mt="$5" marginTop="$5" width="80%">
                     <Text color="white" size="xl" textAlign="justify">Image</Text>
                     <Button
-                    bgColor='$secondary400'
+                        bgColor='$secondary400'
                         size="md"
                         variant="solid"
                         action="primary"
@@ -405,10 +427,10 @@ const Movie_store = () => {
                             <Image borderRadius="$2xl" source={{ uri: selectedImage }} size="xl" />
                         </Box>
                     )}
-                    
+
                 </Box>
 
-              
+
                 <Box marginTop="$1/6">
                     <Button action="primary" variant="solid" size="lg" isDisabled={false} bgColor="$cyan200" onPress={onSubmit}>
                         <ButtonText color='black'>Save movie</ButtonText>
