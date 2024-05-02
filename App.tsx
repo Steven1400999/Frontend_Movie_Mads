@@ -20,7 +20,9 @@ import Store_Subtitle from './components/Subtitles/Store_Subtitle';
 import Manage_Dubbings from './components/Dubbings/Manage_Dubbings';
 import Update_Dubbing from './components/Dubbings/Update_Dubbing';
 import Store_Dubbing from './components/Dubbings/Store_Dubbing';
-
+import Manage_Categories from './components/Categories/Manage_Categories';
+import Update_Category from './components/Categories/Update_Category';
+import Store_Category from './components/Categories/Store_Category';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -35,6 +37,7 @@ function Root() {
       <Drawer.Screen name="Manage_Languages" component={Manage_Languages} />
       <Drawer.Screen name="Manage_Subtitles" component={Manage_Subtitles} />
       <Drawer.Screen name="Manage_Dubbings" component={Manage_Dubbings} />
+      <Drawer.Screen name="Manage_Categories" component={Manage_Categories} />
     </Drawer.Navigator>
   );
 }
@@ -86,6 +89,12 @@ const CustomDrawerContent = ({ navigation }) => (
         <Text fontSize={'$xl'} padding={13} >Manage Dubbings</Text>
       </TouchableOpacity>
     </Box>
+
+    <Box backgroundColor='$secondary200' borderRadius={'$xl'} marginBottom={8}>
+      <TouchableOpacity onPress={() => navigation.navigate('Manage_Categories')}>
+        <Text fontSize={'$xl'} padding={13} >Manage Categories</Text>
+      </TouchableOpacity>
+    </Box>
     
     <Box backgroundColor='$secondary200' borderRadius={'$xl'} marginBottom={8}>
       <TouchableOpacity onPress={() => navigation.navigate('Login')}>
@@ -110,7 +119,8 @@ export default function App() {
           <Stack.Screen name="Store_Subtitle" component={Store_Subtitle} />
           <Stack.Screen name="Update_Dubbing" component={Update_Dubbing} />
           <Stack.Screen name="Store_Dubbing" component={Store_Dubbing} />
-
+          <Stack.Screen name="Update_Category" component={Update_Category} />
+          <Stack.Screen name="Store_Category" component={Store_Category} />
         </Stack.Navigator>
 
       </GluestackUIProvider>
