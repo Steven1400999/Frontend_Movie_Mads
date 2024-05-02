@@ -6,7 +6,7 @@ import { Alert } from '@gluestack-ui/themed';
 import { InfoIcon } from '@gluestack-ui/themed';
 import { useNavigation } from '@react-navigation/native';
 
-const CardAdminLDSC = ({ data }) => {
+const CardLanguages = ({ data }) => {
     const [token, setToken] = useState(null);
     const navigation =useNavigation();
 
@@ -46,6 +46,14 @@ const CardAdminLDSC = ({ data }) => {
         console.error('Error al eliminar el idioma:', error);
       }
     };
+
+    const handleNavigateUpdate = () => {
+      navigation.navigate('Update_Languages', {
+        id: data.id,
+        language: data.language
+      });
+    };
+
     return (
         
         <Card width="$full" padding={10} variant="elevated" borderRadius="$2xl">
@@ -53,7 +61,7 @@ const CardAdminLDSC = ({ data }) => {
             <Text size='lg' color='black' >{data.language}</Text>
 
             <Box display="flex" flexDirection="row" alignItems="center">
-                    <Button size="sm" variant="solid" action="primary" bgColor='$info500' marginRight={12} isDisabled={false} isFocusVisible={false}>
+                    <Button size="sm" variant="solid" action="primary" bgColor='$info500' marginRight={12} onPress={handleNavigateUpdate} isDisabled={false} isFocusVisible={false}>
                         <ButtonText>Update</ButtonText>
                     </Button>
                     <Button size="sm" variant="solid" action="primary" marginRight={0} bgColor='$red500' onPress={handleDeleteLanguage} isDisabled={false} isFocusVisible={false}>
@@ -65,4 +73,4 @@ const CardAdminLDSC = ({ data }) => {
     );
 };
 
-export default CardAdminLDSC;
+export default CardLanguages;

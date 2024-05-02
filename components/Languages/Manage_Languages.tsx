@@ -14,12 +14,12 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ScrollView } from '@gluestack-ui/themed';
 import { useNavigation } from '@react-navigation/native';
 import { Text } from '@gluestack-ui/themed';
-import CardAdminLDSC from '../Administrator/CardAdminLDSC';
+import CardLanguages from './CardLanguages';
 
 const Manage_Lnaguages = () => {
   const [token, setToken] = useState(null);
   const [languages, setLanguages] = useState([]);
-
+  const navigation = useNavigation();
 
 
   const fetchDataLanguages = async () => {
@@ -53,32 +53,28 @@ const Manage_Lnaguages = () => {
     }, [])
   );
 
-
-
+  const handleStoreLanguage = () => {
+    navigation.navigate('Store_Language');
+  };
 
   return (
 
     <ScrollView width={'$full'} bg="$secondary950" height={'$full'}>
       <Box bg="$secondary900" p="$5" padding={20} marginTop={0} height="100%" alignItems="center">
-        
-        
-      <Button size="lg" variant="solid" action="primary" bgColor='$indigo400' isDisabled={false} isFocusVisible={false} >
+
+
+        <Button size="lg" variant="solid" action="primary" bgColor='$indigo400' isDisabled={false} isFocusVisible={false} onPress={handleStoreLanguage} >
           <ButtonText>Store a Language </ButtonText>
         </Button>
-      
-        
+
+
         <Box paddingTop={15}>
           {languages.map((language) => (
             <Box key={language.id} width="100%" paddingBottom={10}>
-              <CardAdminLDSC data={language} />
+              <CardLanguages data={language} />
             </Box>
           ))}
         </Box>
-
-
-
-
-
       </Box>
 
     </ScrollView>

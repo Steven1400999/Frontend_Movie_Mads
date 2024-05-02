@@ -12,6 +12,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Image } from '@gluestack-ui/themed';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Manage_Languages from './components/Languages/Manage_Languages';
+import UpdateLanguages from './components/Languages/UpdateLanguage';
+import Store_Language from './components/Languages/Store_Language';
+
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -81,6 +84,8 @@ export default function App() {
           <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
           <Stack.Screen name="Register" component={Register} />
           <Stack.Screen name="Root" component={Root} options={{ headerShown: false }} />
+          <Stack.Screen name="Update_Languages" component={UpdateLanguages} />
+          <Stack.Screen name="Store_Language" component={Store_Language} />
 
         </Stack.Navigator>
 
