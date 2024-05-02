@@ -7,14 +7,18 @@ import { InfoIcon } from '@gluestack-ui/themed';
 import { useNavigation } from '@react-navigation/native';
 import { Input } from '@gluestack-ui/themed';
 
-const StoreLanguage = ({  }) => {
+const UpdateSubtitle = ({ route }) => {
     const [token, setToken] = useState(null);
     const navigation = useNavigation();
-    const [formData, setFormData] = React.useState({});
+    const { id, language } = route.params;
+    const [formData, setFormData] = useState({ id: route.params.id, language: route.params.language });
 
 
     useEffect(() => {
-       
+        console.log(id);
+        console.log(language);
+
+
         const fetchToken = async () => {
             try {
                 const token = await AsyncStorage.getItem('token');
@@ -29,11 +33,11 @@ const StoreLanguage = ({  }) => {
         fetchToken();
     }, []);
 
-    const handleStoreLanguage = async () => {
+    const handleUpdateSubtitle = async () => {
         try {
             if (token !== null) {
                 const response = await axios.post(
-                    'http://192.168.0.15/Backend_Movie_Mads/public/api/language_store',
+                    'http://192.168.0.15/Backend_Movie_Mads/public/api/subtitle_update',
                     formData,
                     {
                         headers: {
@@ -43,7 +47,7 @@ const StoreLanguage = ({  }) => {
                     }
                 );
                 console.log(response);
-                navigation.navigate('Manage_Languages');
+                navigation.navigate('Manage_Subtitles');
 
             }
         } catch (error) {
@@ -51,13 +55,26 @@ const StoreLanguage = ({  }) => {
         }
     };
 
-    const isLanguageValid = formData.language && formData.language.trim().length > 0;
 
+    const isLanguageChanged = formData.language !== language; // Usando la variable language directamente
 
     return (
         <Box bg="$secondary950" p="$5" paddingTop={2} marginTop={0} height="100%" alignItems="center">
-            <Text color="white" size="2xl" marginTop={30}>Store a language</Text>
+            <Text color="white" size="2xl" marginTop={30}>Update a language</Text>
 
+            <Box mt="$5" width="80%">
+                <Text color="white" size="xl" textAlign="justify">Id</Text>
+                <Input
+                    variant="outline"
+                    size="md"
+                    isDisabled={true}
+                >
+
+                    <InputField  type="text" placeholder="Id" color="white" >
+                        {id}
+                    </InputField>
+                </Input>
+            </Box>
 
             <Box mt="$5" width="80%">
                 <Text color="white" size="xl" textAlign="justify">Language</Text>
@@ -71,25 +88,26 @@ const StoreLanguage = ({  }) => {
                         onChangeText={value => setFormData({
                             ...formData,
                             language: value
-                        })} />
+                        })} >
+                        {language}
+                    </InputField>
 
                 </Input>
             </Box>
 
 
-            <Box mt="$10" width="80%">
+            <Box mt="$5" width="80%">
 
-            <Button
-                    size="md"
-                    variant="solid"
-                    action="primary"
-                    bgColor={'$emerald500'}
-                    isDisabled={!isLanguageValid}
-                    isFocusVisible={true}
-                    onPress={handleStoreLanguage}
-                >
-                    <ButtonText>Create</ButtonText>
-                </Button>
+        <Button size="md" 
+        variant="solid"
+         action="primary" 
+          bgColor={isLanguageChanged ? '$emerald500' : '$gray400'}
+          isDisabled={!isLanguageChanged}
+          isFocusVisible={false}
+          onPress={handleUpdateSubtitle}
+          >
+          <ButtonText>Update</ButtonText>
+        </Button>
       
         </Box>
 
@@ -98,4 +116,4 @@ const StoreLanguage = ({  }) => {
     );
 };
 
-export default StoreLanguage;
+export default UpdateSubtitle;

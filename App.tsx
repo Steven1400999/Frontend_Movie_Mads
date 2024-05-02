@@ -14,7 +14,9 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import Manage_Languages from './components/Languages/Manage_Languages';
 import UpdateLanguages from './components/Languages/UpdateLanguage';
 import Store_Language from './components/Languages/Store_Language';
-
+import Manage_Subtitles from './components/Subtitles/Manage_Subtitles';
+import Update_Subtitle from './components/Subtitles/Update__Subtitle';
+import Store_Subtitle from './components/Subtitles/Store_Subtitle';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -27,6 +29,7 @@ function Root() {
       <Drawer.Screen name="Movies" component={Movies} />
       <Drawer.Screen name="Movie_store" component={Movie_store} />
       <Drawer.Screen name="Manage_Languages" component={Manage_Languages} />
+      <Drawer.Screen name="Manage_Subtitles" component={Manage_Subtitles} />
     </Drawer.Navigator>
   );
 }
@@ -66,6 +69,12 @@ const CustomDrawerContent = ({ navigation }) => (
         <Text fontSize={'$xl'} padding={13} >Manage Languages</Text>
       </TouchableOpacity>
     </Box>
+
+    <Box backgroundColor='$secondary200' borderRadius={'$xl'} marginBottom={8}>
+      <TouchableOpacity onPress={() => navigation.navigate('Manage_Subtitles')}>
+        <Text fontSize={'$xl'} padding={13} >Manage Subtitles</Text>
+      </TouchableOpacity>
+    </Box>
     
     <Box backgroundColor='$secondary200' borderRadius={'$xl'} marginBottom={8}>
       <TouchableOpacity onPress={() => navigation.navigate('Login')}>
@@ -86,7 +95,8 @@ export default function App() {
           <Stack.Screen name="Root" component={Root} options={{ headerShown: false }} />
           <Stack.Screen name="Update_Languages" component={UpdateLanguages} />
           <Stack.Screen name="Store_Language" component={Store_Language} />
-
+          <Stack.Screen name="Update_Subtitle" component={Update_Subtitle} />
+          <Stack.Screen name="Store_Subtitle" component={Store_Subtitle} />
         </Stack.Navigator>
 
       </GluestackUIProvider>

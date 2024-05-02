@@ -7,7 +7,7 @@ import { InfoIcon } from '@gluestack-ui/themed';
 import { useNavigation } from '@react-navigation/native';
 import { Input } from '@gluestack-ui/themed';
 
-const StoreLanguage = ({  }) => {
+const StoreSubtitle = ({  }) => {
     const [token, setToken] = useState(null);
     const navigation = useNavigation();
     const [formData, setFormData] = React.useState({});
@@ -29,11 +29,11 @@ const StoreLanguage = ({  }) => {
         fetchToken();
     }, []);
 
-    const handleStoreLanguage = async () => {
+    const handleStoreSubtitle = async () => {
         try {
             if (token !== null) {
                 const response = await axios.post(
-                    'http://192.168.0.15/Backend_Movie_Mads/public/api/language_store',
+                    'http://192.168.0.15/Backend_Movie_Mads/public/api/subtitle_store',
                     formData,
                     {
                         headers: {
@@ -43,7 +43,7 @@ const StoreLanguage = ({  }) => {
                     }
                 );
                 console.log(response);
-                navigation.navigate('Manage_Languages');
+                navigation.navigate('Manage_Subtitles');
 
             }
         } catch (error) {
@@ -56,7 +56,7 @@ const StoreLanguage = ({  }) => {
 
     return (
         <Box bg="$secondary950" p="$5" paddingTop={2} marginTop={0} height="100%" alignItems="center">
-            <Text color="white" size="2xl" marginTop={30}>Store a language</Text>
+            <Text color="white" size="2xl" marginTop={30}>Store a subtitle</Text>
 
 
             <Box mt="$5" width="80%">
@@ -86,7 +86,7 @@ const StoreLanguage = ({  }) => {
                     bgColor={'$emerald500'}
                     isDisabled={!isLanguageValid}
                     isFocusVisible={true}
-                    onPress={handleStoreLanguage}
+                    onPress={handleStoreSubtitle}
                 >
                     <ButtonText>Create</ButtonText>
                 </Button>
@@ -98,4 +98,4 @@ const StoreLanguage = ({  }) => {
     );
 };
 
-export default StoreLanguage;
+export default StoreSubtitle;
