@@ -23,6 +23,7 @@ import Store_Dubbing from './components/Dubbings/Store_Dubbing';
 import Manage_Categories from './components/Categories/Manage_Categories';
 import Update_Category from './components/Categories/Update_Category';
 import Store_Category from './components/Categories/Store_Category';
+import Manage_Movies from './components/Administrator/Movies/Manage_Movies';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -33,11 +34,12 @@ function Root() {
   return (
     <Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />}>
       <Drawer.Screen name="Movies" component={Movies} />
-      <Drawer.Screen name="Movie_store" component={Movie_store} />
       <Drawer.Screen name="Manage_Languages" component={Manage_Languages} />
       <Drawer.Screen name="Manage_Subtitles" component={Manage_Subtitles} />
       <Drawer.Screen name="Manage_Dubbings" component={Manage_Dubbings} />
       <Drawer.Screen name="Manage_Categories" component={Manage_Categories} />
+      <Drawer.Screen name="Manage_Movies" component={Manage_Movies} />
+
     </Drawer.Navigator>
   );
 }
@@ -67,8 +69,8 @@ const CustomDrawerContent = ({ navigation }) => (
     </Box>
 
     <Box backgroundColor='$secondary200' borderRadius={'$xl'} marginBottom={8}>
-      <TouchableOpacity onPress={() => navigation.navigate('Movie_store')}>
-        <Text fontSize={'$xl'} padding={13} >Store a movie</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('Manage_Movies')}>
+        <Text fontSize={'$xl'} padding={13} >Manage Movies</Text>
       </TouchableOpacity>
     </Box>
 
@@ -95,12 +97,15 @@ const CustomDrawerContent = ({ navigation }) => (
         <Text fontSize={'$xl'} padding={13} >Manage Categories</Text>
       </TouchableOpacity>
     </Box>
+
     
     <Box backgroundColor='$secondary200' borderRadius={'$xl'} marginBottom={8}>
       <TouchableOpacity onPress={() => navigation.navigate('Login')}>
         <Text fontSize={'$xl'} padding={13} >Logout</Text>
       </TouchableOpacity>
     </Box>
+
+    
 
   </Box>
 );
@@ -121,6 +126,7 @@ export default function App() {
           <Stack.Screen name="Store_Dubbing" component={Store_Dubbing} />
           <Stack.Screen name="Update_Category" component={Update_Category} />
           <Stack.Screen name="Store_Category" component={Store_Category} />
+          <Stack.Screen name="Movie_store" component={Movie_store} />
         </Stack.Navigator>
 
       </GluestackUIProvider>
