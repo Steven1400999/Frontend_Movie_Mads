@@ -81,7 +81,7 @@ const CardMoviesAdmin = ({ data }) => {
         try {
             if (token !== null) {
                 setToken(token);
-                const response = await axios.get(`http://192.168.0.15/Backend_Movie_Mads/public/api/category_show/${data.category_id}`, {
+                const response = await axios.get(`http://192.168.0.15/Backend_Movie_Mads/public/api/category_show`, data.category_id,{
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${token}`,

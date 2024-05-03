@@ -141,6 +141,9 @@ const Movie_store = () => {
 
     const onSubmit = async () => {
         try {
+            //const response = await fetch(selectedImage);
+            //const blob = await response.blob();
+            //formData.append('Image', blob, )
             const token = await AsyncStorage.getItem('token');
             if (token !== null) {
                 setToken(token);
@@ -168,6 +171,7 @@ const Movie_store = () => {
 
     const pickImageAsync = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
             allowsEditing: true,
             quality: 1,
         });
@@ -182,7 +186,7 @@ const Movie_store = () => {
             setSelectedImage(result.assets[0].uri);
             console.log(result);
         } else {
-            alert('You did not select any image.');
+            alert('You didn´t select any image.');
         }
     };
 
