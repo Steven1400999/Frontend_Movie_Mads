@@ -15,21 +15,33 @@ const CardMoviesAdmin = ({ data }) => {
     const [subtitle, setSubtitle] = useState([]);
 
 
-
     useEffect(() => {
-        const fetchToken = async () => {
+        const fetchData = async () => {
             try {
                 const token = await AsyncStorage.getItem('token');
                 if (token !== null) {
                     setToken(token);
+
+                    const [categoryResponse, dubbingResponse, languageResponse, subtitleResponse] = await Promise.all([
+                        axios.post(`http://192.168.0.15/Backend_Movie_Mads/public/api/category_show`, { id: data.category_id }, { headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` } }),
+                        axios.post(`http://192.168.0.15/Backend_Movie_Mads/public/api/dubbing_show`, { id: data.dubbing_id }, { headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` } }),
+                        axios.post(`http://192.168.0.15/Backend_Movie_Mads/public/api/language_show`, { id: data.language_id }, { headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` } }),
+                        axios.post(`http://192.168.0.15/Backend_Movie_Mads/public/api/subtitle_show`, { id: data.subtitle_id }, { headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` } })
+                    ]);
+
+                    setCategory(categoryResponse.data.category);
+                    setDubbing(dubbingResponse.data.language);
+                    setLanguage(languageResponse.data.language);
+                    setSubtitle(subtitleResponse.data.language);
                 }
             } catch (error) {
-                console.error('Error getting token:', error);
+                console.error('Error fetching data:', error);
             }
         };
 
-        fetchToken();
+        fetchData();
     }, []);
+
 
     const handleDeleteMovie = async () => {
         try {
@@ -58,6 +70,7 @@ const CardMoviesAdmin = ({ data }) => {
 
 
 
+
     const handleNavigateUpdate = () => {
         navigation.navigate('Update_Movie', {
             id: data.id,
@@ -68,37 +81,11 @@ const CardMoviesAdmin = ({ data }) => {
             language_id: data.language_id,
             dubbing_id: data.dubbing_id,
             subtitle_id: data.subtitle_id,
-            category_id: data.category_id,
+            category_id: data.category_id}
+        );
+        console.log("Esta es la data de card: ", data.title);
 
-
-        });
-    };
-
-
-    useEffect(() => {
-
-    const getCategory = async () => {
-        try {
-            if (token !== null) {
-                setToken(token);
-                const response = await axios.get(`http://192.168.0.15/Backend_Movie_Mads/public/api/category_show`, data.category_id,{
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`,
-                    },
-                });
-                setCategory(response.data);
-                console.log(response.data);
-            }
-        } catch (error) {
-            console.error('Error al obtener la categoría:', error);
-            console.log(response.data);
-
-        }
-    };
-
-    getCategory();
-}, [data.category_id]);
+    }
 
 
 
@@ -107,7 +94,7 @@ const CardMoviesAdmin = ({ data }) => {
     return (
 
         <Card padding={10} variant="elevated" borderRadius="$2xl"  >
-            <Box  width={'$80'}>
+            <Box width={'$80'}>
 
                 <Box marginBottom={'$3'}>
                     <Text size='lg' color='black' >Id : {data.id} </Text>
@@ -125,7 +112,7 @@ const CardMoviesAdmin = ({ data }) => {
                 </Box>
 
                 <Box marginBottom={'$3'}>
-                    <Text size='lg' color='black' >Category : {category.category} </Text>
+                    <Text size='lg' color='black' >Category : {category} </Text>
                 </Box>
 
                 <Box marginBottom={'$3'}>
@@ -134,15 +121,15 @@ const CardMoviesAdmin = ({ data }) => {
                 </Box>
 
                 <Box marginBottom={'$3'}>
-                    <Text size='lg' color='black' >Language : {data.language_id} </Text>
+                    <Text size='lg' color='black' >Language : {language} </Text>
                 </Box>
 
                 <Box marginBottom={'$3'}>
-                    <Text size='lg' color='black' >Dubbing : {data.dubbing_id} </Text>
+                    <Text size='lg' color='black' >Dubbing : {dubbing} </Text>
                 </Box>
 
                 <Box marginBottom={'$3'}>
-                    <Text size='lg' color='black' >Subtitle : {data.subtitle_id} </Text>
+                    <Text size='lg' color='black' >Subtitle : {subtitle} </Text>
                 </Box>
 
 

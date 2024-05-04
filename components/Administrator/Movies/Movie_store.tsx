@@ -14,6 +14,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ScrollView } from '@gluestack-ui/themed';
 import { useNavigation } from '@react-navigation/native';
 import * as ImagePicker from 'expo-image-picker';
+import { ChevronDownIcon } from '@gluestack-ui/themed';
 
 
 
@@ -244,12 +245,15 @@ const Movie_store = () => {
                                 Choose the category of the movie
                             </FormControlLabelText>
                         </FormControlLabel>
-                        <Select onValueChange={(value) => {setFormData({ ...formData, category_id: value });
-                      setSelectedCategory(value);
-                      }}>
+                        <Select onValueChange={(value) => {
+                            setFormData({ ...formData, category_id: value });
+                            setSelectedCategory(value);
+                        }}>
                             <SelectTrigger>
                                 <SelectInput color='white' placeholder="Select option" />
-
+                                <SelectIcon mr="$3">
+                                    <Icon as={ChevronDownIcon} />
+                                </SelectIcon>
                             </SelectTrigger>
                             <SelectPortal>
                                 <SelectBackdrop />
@@ -294,7 +298,9 @@ const Movie_store = () => {
                         >
                             <SelectTrigger>
                                 <SelectInput color='white' placeholder="Select option" />
-
+                                <SelectIcon mr="$3">
+                                    <Icon as={ChevronDownIcon} />
+                                </SelectIcon>
                             </SelectTrigger>
                             <SelectPortal>
                                 <SelectBackdrop />
@@ -334,12 +340,14 @@ const Movie_store = () => {
                         </FormControlLabel>
                         <Select onValueChange={(value) => {
                             setFormData({ ...formData, dubbing_id: value });
-                        setSelectedDubbing(value);
-                    
+                            setSelectedDubbing(value);
+
                         }}>
                             <SelectTrigger>
                                 <SelectInput color='white' placeholder="Select option" />
-
+                                <SelectIcon mr="$3">
+                                    <Icon as={ChevronDownIcon} />
+                                </SelectIcon>
                             </SelectTrigger>
                             <SelectPortal>
                                 <SelectBackdrop />
@@ -376,17 +384,19 @@ const Movie_store = () => {
                                 Choose the subtitle of the movie
                             </FormControlLabelText>
                         </FormControlLabel>
-                        <Select onValueChange={(value) =>{ 
-                            
+                        <Select onValueChange={(value) => {
+
                             setFormData({ ...formData, subtitle_id: value });
-                    setSelectedSubtitle(value);
-                    
-                    
-                    
-                    }}>
+                            setSelectedSubtitle(value);
+
+
+
+                        }}>
                             <SelectTrigger>
                                 <SelectInput color='white' placeholder="Select option" />
-
+                                <SelectIcon mr="$3">
+                                    <Icon as={ChevronDownIcon} />
+                                </SelectIcon>
                             </SelectTrigger>
                             <SelectPortal>
                                 <SelectBackdrop />
@@ -428,7 +438,7 @@ const Movie_store = () => {
                     </Button>
                     {selectedImage && (
                         <Box mt="$3" width="100%" alignItems="center">
-                            <Image borderRadius="$2xl" source={{ uri: selectedImage }} size="xl" />
+                            <Image borderRadius="$2xl" source={{ uri: selectedImage }} size="xl" alt={selectedImage} />
                         </Box>
                     )}
 
