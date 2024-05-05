@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Text, Image, Card, Button, ButtonText, AlertIcon } from '@gluestack-ui/themed';
+import { Box, Text, Image, Card, Button, ButtonText, AlertIcon, TrashIcon } from '@gluestack-ui/themed';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Alert } from '@gluestack-ui/themed';
 import { InfoIcon } from '@gluestack-ui/themed';
 import { useNavigation } from '@react-navigation/native';
+import { IpAddress } from '../IpAddress';
+import { ButtonIcon } from '@gluestack-ui/themed';
+import { EditIcon } from '@gluestack-ui/themed';
 
 const CardCategories = ({ data }) => {
     const [token, setToken] = useState(null);
@@ -62,10 +65,12 @@ const CardCategories = ({ data }) => {
 
             <Box display="flex" flexDirection="row" alignItems="center">
                     <Button size="sm" variant="solid" action="primary" bgColor='$info500' marginRight={12} onPress={handleNavigateUpdate} isDisabled={false} isFocusVisible={false}>
-                        <ButtonText>Update</ButtonText>
+                        <ButtonText></ButtonText>
+                        <ButtonIcon as={EditIcon} />
                     </Button>
                     <Button size="sm" variant="solid" action="primary" marginRight={0} bgColor='$red500' onPress={handleDeleteCategory} isDisabled={false} isFocusVisible={false}>
-                        <ButtonText>Delete</ButtonText>
+                        <ButtonText></ButtonText>
+                        <ButtonIcon as={TrashIcon} />
                     </Button>
                 </Box>
         </Box>

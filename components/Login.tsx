@@ -8,6 +8,7 @@ import { InputSlot } from '@gluestack-ui/themed';
 import { EyeIcon } from '@gluestack-ui/themed';
 import { EyeOffIcon } from '@gluestack-ui/themed';
 import { InputIcon } from '@gluestack-ui/themed';
+import { IpAddress } from './IpAddress';
 
 const Logo = require('../assets/Logo/Logo_Login.jpg');
 
@@ -50,7 +51,7 @@ const Login = () => {
 
   const user_validation = () => {
     console.log(formData)
-    axios.post("http://192.168.0.15/Backend_Movie_Mads/public/api/login", formData,
+    axios.post(`${IpAddress}/Backend_Movie_Mads/public/api/login`, formData,
       {
         headers: {
           Accept: "application/json",

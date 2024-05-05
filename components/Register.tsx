@@ -7,6 +7,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Login from './Login';
 import { config } from '@gluestack-ui/config';
 import { useNavigation } from '@react-navigation/native';
+import { IpAddress } from './IpAddress';
 
 
 const Logo = require('../assets/Logo/Logo_Login.jpg');
@@ -58,7 +59,7 @@ const Register = () => {
 
   const user_validation = () => {
     console.log(formData)
-    axios.post("http://192.168.0.15/Backend_Movie_Mads/public/api/register", formData,
+    axios.post(`${IpAddress}/Backend_Movie_Mads/public/api/register`, formData,
       {
         headers: {
           Accept: "application/json",

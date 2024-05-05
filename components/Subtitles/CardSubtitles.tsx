@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Text, Image, Card, Button, ButtonText, AlertIcon } from '@gluestack-ui/themed';
+import { Box, Text, Image, Card, Button, ButtonText, AlertIcon, ButtonIcon, EditIcon } from '@gluestack-ui/themed';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Alert } from '@gluestack-ui/themed';
 import { InfoIcon } from '@gluestack-ui/themed';
 import { useNavigation } from '@react-navigation/native';
+import { IpAddress } from '../IpAddress';
+import { TrashIcon } from '@gluestack-ui/themed';
 
 const CardSubtitles = ({ data }) => {
     const [token, setToken] = useState(null);
@@ -29,7 +31,7 @@ const CardSubtitles = ({ data }) => {
       try {
         if (token !== null) {
             const response = await axios.post(
-                'http://192.168.0.15/Backend_Movie_Mads/public/api/subtitle_destroy',
+                `${IpAddress}/Backend_Movie_Mads/public/api/subtitle_destroy`,
                 { id: data.id }, 
                 {
                   headers: {
@@ -62,10 +64,12 @@ const CardSubtitles = ({ data }) => {
 
             <Box display="flex" flexDirection="row" alignItems="center">
                     <Button size="sm" variant="solid" action="primary" bgColor='$info500' marginRight={12} onPress={handleNavigateUpdate} isDisabled={false} isFocusVisible={false}>
-                        <ButtonText>Update</ButtonText>
+                        <ButtonText></ButtonText>
+                        <ButtonIcon as={EditIcon} />
                     </Button>
                     <Button size="sm" variant="solid" action="primary" marginRight={0} bgColor='$red500' onPress={handleDeleteSubtitle} isDisabled={false} isFocusVisible={false}>
-                        <ButtonText>Delete</ButtonText>
+                        <ButtonText></ButtonText>
+                        <ButtonIcon as={TrashIcon} />
                     </Button>
                 </Box>
         </Box>

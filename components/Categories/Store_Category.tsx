@@ -6,6 +6,7 @@ import { Alert } from '@gluestack-ui/themed';
 import { InfoIcon } from '@gluestack-ui/themed';
 import { useNavigation } from '@react-navigation/native';
 import { Input } from '@gluestack-ui/themed';
+import { IpAddress } from '../IpAddress';
 
 const StoreCategory = ({  }) => {
     const [token, setToken] = useState(null);
@@ -33,7 +34,7 @@ const StoreCategory = ({  }) => {
         try {
             if (token !== null) {
                 const response = await axios.post(
-                    'http://192.168.0.15/Backend_Movie_Mads/public/api/category_store',
+                    `${IpAddress}/Backend_Movie_Mads/public/api/category_store`,
                     formData,
                     {
                         headers: {

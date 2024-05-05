@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Text, Image, Card, Button, ButtonText, AlertIcon } from '@gluestack-ui/themed';
+import { Box, Text, Image, Card, Button, ButtonText, AlertIcon, TrashIcon, ButtonIcon, EditIcon } from '@gluestack-ui/themed';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Alert } from '@gluestack-ui/themed';
 import { InfoIcon } from '@gluestack-ui/themed';
 import { useNavigation } from '@react-navigation/native';
+import { IpAddress } from '../../IpAddress';
 
 const CardMoviesAdmin = ({ data }) => {
     const [token, setToken] = useState(null);
@@ -23,10 +24,10 @@ const CardMoviesAdmin = ({ data }) => {
                     setToken(token);
 
                     const [categoryResponse, dubbingResponse, languageResponse, subtitleResponse] = await Promise.all([
-                        axios.post(`http://192.168.0.15/Backend_Movie_Mads/public/api/category_show`, { id: data.category_id }, { headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` } }),
-                        axios.post(`http://192.168.0.15/Backend_Movie_Mads/public/api/dubbing_show`, { id: data.dubbing_id }, { headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` } }),
-                        axios.post(`http://192.168.0.15/Backend_Movie_Mads/public/api/language_show`, { id: data.language_id }, { headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` } }),
-                        axios.post(`http://192.168.0.15/Backend_Movie_Mads/public/api/subtitle_show`, { id: data.subtitle_id }, { headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` } })
+                        axios.post(`${IpAddress}/Backend_Movie_Mads/public/api/category_show`, { id: data.category_id }, { headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` } }),
+                        axios.post(`${IpAddress}/Backend_Movie_Mads/public/api/dubbing_show`, { id: data.dubbing_id }, { headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` } }),
+                        axios.post(`${IpAddress}/Backend_Movie_Mads/public/api/language_show`, { id: data.language_id }, { headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` } }),
+                        axios.post(`${IpAddress}/Backend_Movie_Mads/public/api/subtitle_show`, { id: data.subtitle_id }, { headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` } })
                     ]);
 
                     setCategory(categoryResponse.data.category);
@@ -47,7 +48,7 @@ const CardMoviesAdmin = ({ data }) => {
         try {
             if (token !== null) {
                 const response = await axios.post(
-                    'http://192.168.0.15/Backend_Movie_Mads/public/api/movie_destroy',
+                    `${IpAddress}/Backend_Movie_Mads/public/api/movie_destroy`,
                     { id: data.id },
                     {
                         headers: {
@@ -96,7 +97,7 @@ const CardMoviesAdmin = ({ data }) => {
         <Card padding={10} variant="elevated" borderRadius="$2xl"  >
             <Box width={'$80'}>
 
-                <Box marginBottom={'$3'}>
+                <Box marginBottom={'$3'} >
                     <Text size='lg' color='black' >Id : {data.id} </Text>
                 </Box>
                 <Box marginBottom={'$3'}>
@@ -136,10 +137,15 @@ const CardMoviesAdmin = ({ data }) => {
 
                 <Box display="flex" flexDirection="row" alignItems="center">
                     <Button size="sm" variant="solid" action="primary" bgColor='$info500' marginRight={12} onPress={handleNavigateUpdate} isDisabled={false} isFocusVisible={false}>
-                        <ButtonText>Update</ButtonText>
+                        <ButtonText></ButtonText>
+                        <ButtonIcon as={EditIcon} />
+
                     </Button>
                     <Button size="sm" variant="solid" action="primary" marginRight={0} bgColor='$red500' onPress={handleDeleteMovie} isDisabled={false} isFocusVisible={false}>
-                        <ButtonText>Delete</ButtonText>
+                        
+                        <ButtonText></ButtonText>
+                        <ButtonIcon as={TrashIcon} />
+
                     </Button>
                 </Box>
             </Box>

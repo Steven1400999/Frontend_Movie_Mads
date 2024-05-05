@@ -15,7 +15,7 @@ import { ScrollView } from '@gluestack-ui/themed';
 import { useNavigation } from '@react-navigation/native';
 import * as ImagePicker from 'expo-image-picker';
 import { ChevronDownIcon } from '@gluestack-ui/themed';
-
+import { IpAddress } from '../../IpAddress';
 
 
 const Movie_store = () => {
@@ -40,7 +40,7 @@ const Movie_store = () => {
                 const token = await AsyncStorage.getItem('token');
                 if (token !== null) {
                     setToken(token); // Update state after token retrieval
-                    axios.get('http://192.168.0.15/Backend_Movie_Mads/public/api/category_index', {
+                    axios.get(`${IpAddress}/Backend_Movie_Mads/public/api/category_index`, {
                         headers: {
                             'Content-Type': 'application/json',
                             Authorization: `Bearer ${token}`,
@@ -66,7 +66,7 @@ const Movie_store = () => {
                 const token = await AsyncStorage.getItem('token');
                 if (token !== null) {
                     setToken(token); // Update state after token retrieval
-                    axios.get('http://192.168.0.15/Backend_Movie_Mads/public/api/dubbing_index', {
+                    axios.get(`${IpAddress}/Backend_Movie_Mads/public/api/dubbing_index`, {
                         headers: {
                             'Content-Type': 'application/json',
                             Authorization: `Bearer ${token}`,
@@ -91,7 +91,7 @@ const Movie_store = () => {
                 const token = await AsyncStorage.getItem('token');
                 if (token !== null) {
                     setToken(token); // Update state after token retrieval
-                    axios.get('http://192.168.0.15/Backend_Movie_Mads/public/api/language_index', {
+                    axios.get(`${IpAddress}/Backend_Movie_Mads/public/api/language_index`, {
                         headers: {
                             'Content-Type': 'application/json',
                             Authorization: `Bearer ${token}`,
@@ -117,7 +117,7 @@ const Movie_store = () => {
                 const token = await AsyncStorage.getItem('token');
                 if (token !== null) {
                     setToken(token); // Update state after token retrieval
-                    axios.get('http://192.168.0.15/Backend_Movie_Mads/public/api/subtitle_index', {
+                    axios.get(`${IpAddress}/Backend_Movie_Mads/public/api/subtitle_index`, {
                         headers: {
                             'Content-Type': 'application/json',
                             Authorization: `Bearer ${token}`,
@@ -149,7 +149,7 @@ const Movie_store = () => {
             if (token !== null) {
                 setToken(token);
                 console.log(formData);
-                axios.post('http://192.168.0.15/Backend_Movie_Mads/public/api/movie_store', formData, {
+                axios.post(`${IpAddress}/Backend_Movie_Mads/public/api/movie_store`, formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                         Authorization: `Bearer ${token}`,

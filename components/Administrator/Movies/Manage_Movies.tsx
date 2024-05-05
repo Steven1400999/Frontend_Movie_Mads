@@ -15,6 +15,7 @@ import { ScrollView } from '@gluestack-ui/themed';
 import { useNavigation } from '@react-navigation/native';
 import { Text } from '@gluestack-ui/themed';
 import CardMoviesAdmin from './CardMoviesAdmin';
+import { IpAddress } from '../../IpAddress';
 
 const Manage_Subtitles = () => {
   const [token, setToken] = useState(null);
@@ -27,7 +28,7 @@ const Manage_Subtitles = () => {
       const token = await AsyncStorage.getItem('token');
       if (token !== null) {
       }
-      const response = await axios.get('http://192.168.0.15/Backend_Movie_Mads/public/api/movie_index', {
+      const response = await axios.get(`${IpAddress}/Backend_Movie_Mads/public/api/movie_index`, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,

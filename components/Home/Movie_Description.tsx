@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Text, Image, Card } from '@gluestack-ui/themed';
+import { IpAddress } from '../IpAddress';
 
 const Movie_Description = ({}) => {
 

@@ -6,6 +6,7 @@ import { Alert } from '@gluestack-ui/themed';
 import { InfoIcon } from '@gluestack-ui/themed';
 import { useNavigation } from '@react-navigation/native';
 import { Input } from '@gluestack-ui/themed';
+import { IpAddress } from '../IpAddress'; 
 
 const UpdateSubtitle = ({ route }) => {
     const [token, setToken] = useState(null);
@@ -37,7 +38,7 @@ const UpdateSubtitle = ({ route }) => {
         try {
             if (token !== null) {
                 const response = await axios.post(
-                    'http://192.168.0.15/Backend_Movie_Mads/public/api/subtitle_update',
+                    `${IpAddress}/Backend_Movie_Mads/public/api/subtitle_update`,
                     formData,
                     {
                         headers: {
