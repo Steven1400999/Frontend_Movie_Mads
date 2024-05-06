@@ -25,6 +25,7 @@ import Update_Category from './components/Categories/Update_Category';
 import Store_Category from './components/Categories/Store_Category';
 import Manage_Movies from './components/Administrator/Movies/Manage_Movies';
 import Update_Movie from './components/Administrator/Movies/Update_Movie';
+import Movie_Description from './components/Home/Movie_Description';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -129,6 +130,9 @@ export default function App() {
           <Stack.Screen name="Store_Category" component={Store_Category} />
           <Stack.Screen name="Movie_store" component={Movie_store} />
           <Stack.Screen name="Update_Movie" component={Update_Movie} />
+
+
+          <Stack.Screen name="Movie_Description" component={Movie_Description} />
 
         </Stack.Navigator>
 
