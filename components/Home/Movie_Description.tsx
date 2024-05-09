@@ -5,6 +5,7 @@ import { AccordionHeader } from '@gluestack-ui/themed';
 import { RemoveIcon } from '@gluestack-ui/themed';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
+import Card_Schedules from './Card_Schedules';
 
 const Movie_Description = ({ route }) => {
   const { movie } = route.params;
@@ -181,7 +182,6 @@ const Movie_Description = ({ route }) => {
                 width="100%"
                 shadowColor="transparent"
                 mt="$5"
-                mb='$5'
                 sx={{
                   backgroundColor: "$backgroundLight0",
                   _dark: {
@@ -218,6 +218,40 @@ const Movie_Description = ({ route }) => {
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
+              <Accordion
+                width="100%"
+                shadowColor="transparent"
+                mt="$5"
+                mb='$5'
+                sx={{
+                  backgroundColor: "$backgroundLight0",
+                  _dark: {
+                    backgroundColor: "$backgroundDark950",
+                  },
+                }}
+              >
+                <AccordionItem value="c">
+                  <AccordionHeader>
+                    <AccordionTrigger>
+                      {({ isExpanded }) => (
+                        <>
+                          {isExpanded ? (
+                            <AccordionIcon as={RemoveIcon} />
+                          ) : (
+                            <AccordionIcon as={AddIcon} />
+                          )}
+                          <AccordionTitleText ml="$3">Duration</AccordionTitleText>
+                        </>
+                      )}
+                    </AccordionTrigger>
+                  </AccordionHeader>
+                  <AccordionContent>
+                    <AccordionContentText>
+                      {movie.duration} <Text> Hours</Text>
+                    </AccordionContentText>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
 
             </AccordionContent>
           </AccordionItem>
@@ -227,7 +261,7 @@ const Movie_Description = ({ route }) => {
 
       <Box>
 
-
+<Card_Schedules />
 
       </Box>
 

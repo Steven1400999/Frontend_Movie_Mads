@@ -61,7 +61,7 @@ const Card_Schedules = ({ data }) => {
         
         <Card width="$full" padding={10} variant="elevated" borderRadius="$2xl">
         <Box width="$full" padding={10} display="flex" flexDirection="row" justifyContent="space-between">
-            <Text size='lg' color='black' >{data.category}</Text>
+            <Text size='lg' color='black' >hola</Text>
 
             <Box display="flex" flexDirection="row" alignItems="center">
                     <Button size="sm" variant="solid" action="primary" bgColor='$info500' marginRight={12} onPress={handleNavigateUpdate} isDisabled={false} isFocusVisible={false}>
