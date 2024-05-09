@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Text, Image, Card, Button, ButtonText, AlertIcon, TrashIcon } from '@gluestack-ui/themed';
+import { Box, Text, Image, Card, Button, ButtonText, AlertIcon, TrashIcon, AlertDialog, AlertDialogBackdrop, AlertDialogContent, CloseIcon } from '@gluestack-ui/themed';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Alert } from '@gluestack-ui/themed';
@@ -8,10 +8,18 @@ import { useNavigation } from '@react-navigation/native';
 import { IpAddress } from '../IpAddress';
 import { ButtonIcon } from '@gluestack-ui/themed';
 import { EditIcon } from '@gluestack-ui/themed';
+import { AlertDialogHeader } from '@gluestack-ui/themed';
+import { Heading } from '@gluestack-ui/themed';
+import { AlertDialogCloseButton } from '@gluestack-ui/themed';
+import { Icon } from '@gluestack-ui/themed';
+import { AlertDialogBody } from '@gluestack-ui/themed';
+import { AlertDialogFooter } from '@gluestack-ui/themed';
+import { ButtonGroup } from '@gluestack-ui/themed';
 
 const CardCategories = ({ data }) => {
     const [token, setToken] = useState(null);
     const navigation =useNavigation();
+    const [showAlertDialog, setShowAlertDialog] = React.useState(false)
 
     useEffect(() => {
       const fetchToken = async () => {
@@ -68,12 +76,58 @@ const CardCategories = ({ data }) => {
                         <ButtonText></ButtonText>
                         <ButtonIcon as={EditIcon} />
                     </Button>
-                    <Button size="sm" variant="solid" action="primary" marginRight={0} bgColor='$red500' onPress={handleDeleteCategory} isDisabled={false} isFocusVisible={false}>
+                    <Button size="sm" variant="solid" action="primary" marginRight={0} bgColor='$red500' onPress={() => setShowAlertDialog(true)} isDisabled={false} isFocusVisible={false}>
                         <ButtonText></ButtonText>
                         <ButtonIcon as={TrashIcon} />
                     </Button>
                 </Box>
         </Box>
+
+        <AlertDialog
+        isOpen={showAlertDialog}
+        onClose={() => {
+          setShowAlertDialog(false)
+        }}
+      >
+        <AlertDialogBackdrop />
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <Heading size="lg">Delete category</Heading>
+            <AlertDialogCloseButton>
+              <Icon as={CloseIcon} />
+            </AlertDialogCloseButton>
+          </AlertDialogHeader>
+          <AlertDialogBody>
+            <Text size="sm">
+              Are you sure you want to delete this category? The category will be permanently removed.
+            </Text>
+          </AlertDialogBody>
+          <AlertDialogFooter>
+            <ButtonGroup space="lg">
+              <Button
+                variant="outline"
+                action="secondary"
+                onPress={() => {
+                  setShowAlertDialog(false)
+                }}
+              >
+                <ButtonText>Cancel</ButtonText>
+              </Button>
+              <Button
+                bg="$error600"
+                action="negative"
+                onPress={() => {
+                    setShowAlertDialog(false);
+                    handleDeleteCategory();
+                }}
+              >
+                <ButtonText>Delete</ButtonText>
+              </Button>
+            </ButtonGroup>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
     </Card>
     );
 };
