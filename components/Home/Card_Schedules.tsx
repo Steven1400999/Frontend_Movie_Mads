@@ -28,28 +28,7 @@ const Card_Schedules = ({ data }) => {
       fetchToken();
     }, []);
   
-    const handleDeleteCategory = async () => {
-      try {
-        if (token !== null) {
-            const response = await axios.post(
-                'http://192.168.0.15/Backend_Movie_Mads/public/api/category_destroy',
-                { id: data.id }, 
-                {
-                  headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
-                  },
-                }
-              );
-          console.log(response);
-          navigation.navigate('Movies');
-
-        }
-      } catch (error) {
-        console.error('Error al eliminar el idioma:', error);
-      }
-    };
-
+   
     const handleNavigateUpdate = () => {
       navigation.navigate('Update_Category', {
         id: data.id,
@@ -68,10 +47,7 @@ const Card_Schedules = ({ data }) => {
                         <ButtonText></ButtonText>
                         <ButtonIcon as={EditIcon} />
                     </Button>
-                    <Button size="sm" variant="solid" action="primary" marginRight={0} bgColor='$red500' onPress={handleDeleteCategory} isDisabled={false} isFocusVisible={false}>
-                        <ButtonText></ButtonText>
-                        <ButtonIcon as={TrashIcon} />
-                    </Button>
+                   
                 </Box>
         </Box>
     </Card>
