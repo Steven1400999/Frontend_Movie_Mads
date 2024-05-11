@@ -56,18 +56,20 @@ const StoreLanguage = ({  }) => {
 
 
     return (
-        <Box bg="$secondary950" p="$5" paddingTop={2} marginTop={0} height="100%" alignItems="center">
-            <Text color="white" size="2xl" marginTop={30}>Store a language</Text>
+        <Box bg="white" p="$5" paddingTop={2} marginTop={0} height="100%" alignItems="center">
+            <Text color="black" size="2xl" marginTop={30}>Store a language</Text>
 
 
             <Box mt="$5" width="80%">
-                <Text color="white" size="xl" textAlign="justify">Language</Text>
+                <Text color="black" size="xl" textAlign="justify">Language</Text>
                 <Input
                     variant="outline"
                     size="md"
-                    isDisabled={false}>
+                    isDisabled={false} 
+                    borderColor='$blue700'
+                    borderWidth={2}>
 
-                    <InputField type="text" placeholder="Language" color="white"
+                    <InputField type="text" placeholder="Language" color="black"
 
                         onChangeText={value => setFormData({
                             ...formData,
@@ -84,7 +86,7 @@ const StoreLanguage = ({  }) => {
                     size="md"
                     variant="solid"
                     action="primary"
-                    bgColor={'$emerald500'}
+                    bgColor={'$blue700'}
                     isDisabled={!isLanguageValid}
                     isFocusVisible={true}
                     onPress={handleStoreLanguage}

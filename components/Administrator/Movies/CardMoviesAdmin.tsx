@@ -89,7 +89,6 @@ const CardMoviesAdmin = ({ data }) => {
             subtitle_id: data.subtitle_id,
             category_id: data.category_id}
         );
-        console.log("Esta es la data de card: ", data.title);
 
     }
 
@@ -99,7 +98,7 @@ const CardMoviesAdmin = ({ data }) => {
 
     return (
 
-        <Card padding={10} variant="elevated" borderRadius="$2xl"  >
+        <Card bgColor='white' padding={10} variant="elevated" borderRadius="$2xl" borderColor='$blue800' borderWidth={1.5} hardShadow='2' >
             <Box width={'$80'}>
 
                 <Box marginBottom={'$3'} >
@@ -141,12 +140,12 @@ const CardMoviesAdmin = ({ data }) => {
 
 
                 <Box display="flex" flexDirection="row" alignItems="center">
-                    <Button size="sm" variant="solid" action="primary" bgColor='$info500' marginRight={12} onPress={handleNavigateUpdate} isDisabled={false} isFocusVisible={false}>
+                    <Button width={150} size="sm" variant="solid" action="primary" bgColor='$blue600' marginRight={12} onPress={handleNavigateUpdate} isDisabled={false} isFocusVisible={false}>
                         <ButtonText></ButtonText>
                         <ButtonIcon as={EditIcon} />
 
                     </Button>
-                    <Button size="sm" variant="solid" action="primary" marginRight={0} bgColor='$red500'  onPress={() => setShowAlertDialog(true)} isDisabled={false} isFocusVisible={false}>
+                    <Button  width={150} size="sm" variant="solid" action="primary" marginRight={0} bgColor='$red500'  onPress={() => setShowAlertDialog(true)} isDisabled={false} isFocusVisible={false}>
                         
                         <ButtonText></ButtonText>
                         <ButtonIcon as={TrashIcon} />

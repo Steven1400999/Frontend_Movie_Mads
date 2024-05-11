@@ -60,31 +60,35 @@ const UpdateSubtitle = ({ route }) => {
     const isLanguageChanged = formData.language !== language; // Usando la variable language directamente
 
     return (
-        <Box bg="$secondary950" p="$5" paddingTop={2} marginTop={0} height="100%" alignItems="center">
-            <Text color="white" size="2xl" marginTop={30}>Update a language</Text>
+        <Box bg="white" p="$5" paddingTop={2} marginTop={0} height="100%" alignItems="center">
+            <Text color="black" size="2xl" marginTop={30}>Update a language</Text>
 
             <Box mt="$5" width="80%">
-                <Text color="white" size="xl" textAlign="justify">Id</Text>
+                <Text color="black" size="xl" textAlign="justify">Id</Text>
                 <Input
                     variant="outline"
                     size="md"
                     isDisabled={true}
+                    borderColor='$blue700'
+                    borderWidth={2}
                 >
 
-                    <InputField  type="text" placeholder="Id" color="white" >
+                    <InputField  type="text" placeholder="Id" color="black" >
                         {id}
                     </InputField>
                 </Input>
             </Box>
 
             <Box mt="$5" width="80%">
-                <Text color="white" size="xl" textAlign="justify">Language</Text>
+                <Text color="black" size="xl" textAlign="justify">Language</Text>
                 <Input
                     variant="outline"
                     size="md"
-                    isDisabled={false}>
+                    isDisabled={false}
+                    borderColor='$blue700'
+                    borderWidth={2}>
 
-                    <InputField type="text" placeholder="Language" color="white"
+                    <InputField type="text" placeholder="Language" color="black"
 
                         onChangeText={value => setFormData({
                             ...formData,
@@ -102,8 +106,8 @@ const UpdateSubtitle = ({ route }) => {
         <Button size="md" 
         variant="solid"
          action="primary" 
-          bgColor={isLanguageChanged ? '$emerald500' : '$gray400'}
-          isDisabled={!isLanguageChanged}
+         bgColor={isLanguageChanged ? '$blue700' : '$secondary700'}
+         isDisabled={!isLanguageChanged}
           isFocusVisible={false}
           onPress={handleUpdateSubtitle}
           >

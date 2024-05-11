@@ -63,12 +63,12 @@ const CardSubtitles = ({ data }) => {
 
     return (
         
-        <Card width="$full" padding={10} variant="elevated" borderRadius="$2xl">
-        <Box width="$full" padding={10} display="flex" flexDirection="row" justifyContent="space-between">
+      <Card width="$full" padding={10} variant="elevated" borderRadius="$2xl" borderColor='black' borderWidth={1.5} hardShadow='2' >
+      <Box width="$full" padding={10} display="flex" flexDirection="row" justifyContent="space-between">
             <Text size='lg' color='black' >{data.language}</Text>
 
             <Box display="flex" flexDirection="row" alignItems="center">
-                    <Button size="sm" variant="solid" action="primary" bgColor='$info500' marginRight={12} onPress={handleNavigateUpdate} isDisabled={false} isFocusVisible={false}>
+                    <Button size="sm" variant="solid" action="primary" bgColor='$blue700' marginRight={12} onPress={handleNavigateUpdate} isDisabled={false} isFocusVisible={false}>
                         <ButtonText></ButtonText>
                         <ButtonIcon as={EditIcon} />
                     </Button>

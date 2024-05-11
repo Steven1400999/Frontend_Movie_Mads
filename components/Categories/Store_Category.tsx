@@ -56,18 +56,20 @@ const StoreCategory = ({  }) => {
 
 
     return (
-        <Box bg="$secondary950" p="$5" paddingTop={2} marginTop={0} height="100%" alignItems="center">
-            <Text color="white" size="2xl" marginTop={30}>Store a category</Text>
+        <Box bg="white" p="$5" paddingTop={2} marginTop={0} height="100%" alignItems="center">
+            <Text color="black" size="2xl" marginTop={30}>Store a category</Text>
 
 
             <Box mt="$5" width="80%">
-                <Text color="white" size="xl" textAlign="justify">Category</Text>
+                <Text color="black" size="xl" textAlign="justify">Category</Text>
                 <Input
                     variant="outline"
                     size="md"
-                    isDisabled={false}>
+                    isDisabled={false}
+                    borderColor='$blue700'
+                    borderWidth={2}>
 
-                    <InputField type="text" placeholder="Category" color="white"
+                    <InputField type="text" placeholder="Category" color="black"
 
                         onChangeText={value => setFormData({
                             ...formData,
@@ -84,7 +86,7 @@ const StoreCategory = ({  }) => {
                     size="md"
                     variant="solid"
                     action="primary"
-                    bgColor={'$emerald500'}
+                    bgColor={'$blue700'}
                     isDisabled={!isCategoryValid}
                     isFocusVisible={true}
                     onPress={handleStoreCategory}

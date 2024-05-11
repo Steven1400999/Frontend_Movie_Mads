@@ -198,13 +198,13 @@ const Movie_store = () => {
 
         <ScrollView width={'$full'} height={'$full'}>
 
-            <Box bg="$secondary950" p="$5" paddingTop={2} marginTop={0} height="100%" alignItems="center">
-                <Text color="white" size="2xl" marginTop={30}>Store a movie</Text>
+            <Box bg="white" p="$5" paddingTop={2} marginTop={0} height="100%" alignItems="center">
+                <Text color="black" size="2xl" marginTop={30}>Store a movie</Text>
 
 
                 <Box mt="$5" marginTop="$5" width="80%">
-                    <Text color="white" size="xl" textAlign="justify">Title</Text>
-                    <Input variant="outline" size="md" isDisabled={false}>
+                    <Text color="black" size="xl" textAlign="justify">Title</Text>
+                    <Input variant="outline" size="md" isDisabled={false} borderColor='$blue700' borderWidth={2}>
                         <InputField id='title' type="text" placeholder="Title" color="white"
                             onChangeText={value => setFormData({
                                 ...formData,
@@ -216,9 +216,9 @@ const Movie_store = () => {
 
 
                 <Box mt="$5" marginTop="$5" width="80%">
-                    <Text color="white" size="xl" textAlign="justify">Description</Text>
-                    <Input variant="outline" size="md" isDisabled={false}>
-                        <InputField id='description' type="text" placeholder="Description" color="white" onChangeText={value => setFormData({
+                    <Text color="black" size="xl" textAlign="justify">Description</Text>
+                    <Input variant="outline" size="md" isDisabled={false} borderColor='$blue700' borderWidth={2}>
+                        <InputField id='description' type="text" placeholder="Description" color="black" onChangeText={value => setFormData({
                             ...formData,
                             description: value
                         })} />
@@ -228,9 +228,9 @@ const Movie_store = () => {
 
 
                 <Box mt="$5" marginTop="$5" width="80%">
-                    <Text color="white" size="xl" textAlign="justify">Duration</Text>
-                    <Input variant="outline" size="md" isDisabled={false}>
-                        <InputField id='duration' type="text" placeholder="HH:MM:SS" color="white" /*inputMode='numeric'*/ maxLength={8} onChangeText={value => setFormData({
+                    <Text color="black" size="xl" textAlign="justify">Duration</Text>
+                    <Input variant="outline" size="md" isDisabled={false} borderColor='$blue700' borderWidth={2}>
+                        <InputField id='duration' type="text" placeholder="HH:MM:SS" color="black" /*inputMode='numeric'*/ maxLength={8} onChangeText={value => setFormData({
                             ...formData,
                             duration: value
                         })} />
@@ -238,19 +238,19 @@ const Movie_store = () => {
                 </Box>
 
                 <Box mt="$5" marginTop="$5" width="80%">
-                    <Text color="white" size="xl" textAlign="justify">Category</Text>
+                    <Text color="black" size="xl" textAlign="justify">Category</Text>
                     <FormControl isRequired={!selectedCategory} isInvalid={!selectedCategory}>
                         <FormControlLabel>
-                            <FormControlLabelText color='$secondary200'>
+                            <FormControlLabelText color='$secondary300'>
                                 Choose the category of the movie
                             </FormControlLabelText>
                         </FormControlLabel>
-                        <Select onValueChange={(value) => {
+                        <Select borderColor='$blue700' borderWidth={2} borderRadius={5} onValueChange={(value) => {
                             setFormData({ ...formData, category_id: value });
                             setSelectedCategory(value);
                         }}>
                             <SelectTrigger>
-                                <SelectInput color='white' placeholder="Select option" />
+                                <SelectInput color='black' placeholder="Select option" />
                                 <SelectIcon mr="$3">
                                     <Icon as={ChevronDownIcon} />
                                 </SelectIcon>
@@ -283,21 +283,21 @@ const Movie_store = () => {
 
 
                 <Box mt="$5" marginTop="$5" width="80%">
-                    <Text color="white" size="xl" textAlign="justify">Language</Text>
+                    <Text color="black" size="xl" textAlign="justify">Language</Text>
                     <FormControl isRequired={!selectedLanguage} isInvalid={!selectedLanguage}>
                         <FormControlLabel>
-                            <FormControlLabelText color='$secondary200'>
+                            <FormControlLabelText color='$secondary300'>
                                 Choose the language of the movie
                             </FormControlLabelText>
                         </FormControlLabel>
-                        <Select onValueChange={(value) => {
+                        <Select borderColor='$blue700' borderWidth={2} borderRadius={5} onValueChange={(value) => {
                             setFormData({ ...formData, language_id: value });
                             setSelectedLanguage(value);
 
                         }}
                         >
                             <SelectTrigger>
-                                <SelectInput color='white' placeholder="Select option" />
+                                <SelectInput color='black' placeholder="Select option" />
                                 <SelectIcon mr="$3">
                                     <Icon as={ChevronDownIcon} />
                                 </SelectIcon>
@@ -331,20 +331,20 @@ const Movie_store = () => {
 
 
                 <Box mt="$5" marginTop="$5" width="80%">
-                    <Text color="white" size="xl" textAlign="justify">Dubbing</Text>
+                    <Text color="black" size="xl" textAlign="justify">Dubbing</Text>
                     <FormControl isRequired={!selectedDubbing} isInvalid={!selectedDubbing}>
                         <FormControlLabel>
-                            <FormControlLabelText color='$secondary200'>
+                            <FormControlLabelText color='$secondary300'>
                                 Choose the dubbing of the movie
                             </FormControlLabelText>
                         </FormControlLabel>
-                        <Select onValueChange={(value) => {
+                        <Select borderColor='$blue700' borderWidth={2} borderRadius={5} onValueChange={(value) => {
                             setFormData({ ...formData, dubbing_id: value });
                             setSelectedDubbing(value);
 
                         }}>
                             <SelectTrigger>
-                                <SelectInput color='white' placeholder="Select option" />
+                                <SelectInput color='black' placeholder="Select option" />
                                 <SelectIcon mr="$3">
                                     <Icon as={ChevronDownIcon} />
                                 </SelectIcon>
@@ -377,14 +377,14 @@ const Movie_store = () => {
 
 
                 <Box mt="$5" marginTop="$5" width="80%">
-                    <Text color="white" size="xl" textAlign="justify">Subtitle</Text>
+                    <Text color="black" size="xl" textAlign="justify">Subtitle</Text>
                     <FormControl isRequired={!selectedSubtitle} isInvalid={!selectedSubtitle}>
                         <FormControlLabel>
-                            <FormControlLabelText color='$secondary200'>
+                            <FormControlLabelText color='$secondary300'>
                                 Choose the subtitle of the movie
                             </FormControlLabelText>
                         </FormControlLabel>
-                        <Select onValueChange={(value) => {
+                        <Select borderColor='$blue700' borderWidth={2} borderRadius={5} onValueChange={(value) => {
 
                             setFormData({ ...formData, subtitle_id: value });
                             setSelectedSubtitle(value);
@@ -393,7 +393,7 @@ const Movie_store = () => {
 
                         }}>
                             <SelectTrigger>
-                                <SelectInput color='white' placeholder="Select option" />
+                                <SelectInput color='black' placeholder="Select option" />
                                 <SelectIcon mr="$3">
                                     <Icon as={ChevronDownIcon} />
                                 </SelectIcon>
@@ -425,7 +425,7 @@ const Movie_store = () => {
                 </Box>
 
                 <Box mt="$5" marginTop="$5" width="80%">
-                    <Text color="white" size="xl" textAlign="justify">Image</Text>
+                    <Text color="black" size="xl" textAlign="justify">Image</Text>
                     <Button
                         bgColor='$secondary400'
                         size="md"

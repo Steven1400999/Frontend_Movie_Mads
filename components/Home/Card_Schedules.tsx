@@ -55,12 +55,11 @@ console.log("Id del eschedule:",schedule_id);
 
   return (
 
-    <Box bgColor='$secondary0' padding={10} borderRadius={'$2xl'} ml={5} mr={5}  >
+    <Box bgColor='white' padding={10} borderRadius={'$2xl'} ml={30} mr={30} borderColor='black' borderWidth={1.5} hardShadow='5' alignItems='center' >
       {schedules.length > 0 ? (
         schedules.map((schedule) => (
           <TouchableOpacity key={schedule.id} onPress={() => handleSeatsShow(schedule.id)}>
-            <Box key={schedule.id} bgColor='$blue700' borderColor='$error100' borderWidth={'$1'} borderRadius={'$2xl'} width={300} padding={10} mb={9}>
-              <Text color='white'>ID: {schedule.id}</Text>
+            <Box key={schedule.id} bgColor='$blue700' borderColor='$error100' borderWidth={'$1'} borderRadius={'$2xl'} width={270} padding={10} mb={9}>
               <Text color='white'>Start Time: {schedule.start_time}</Text>
               <Text color='white'>Room: {schedule.room}</Text>
             </Box>

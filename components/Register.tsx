@@ -104,15 +104,16 @@ const Register = () => {
 
   return (
 
-    <Box bg="$secondary950" p="$5" paddingTop={2} marginTop={0} height="100%" alignItems="center">
-      <Image size="xl" borderRadius="$xl" source={Logo} marginTop={40} alt='Logo_Movie_Mads' />
-      <Text color="white" size="2xl" marginTop={10}>Register</Text>
+    <Box bg="white" p="$5" paddingTop={2} marginTop={0} height="100%" alignItems="center">
+      <Image size="xl" borderRadius="$xl" source={Logo} marginTop={40} alt='Logo_Movie_Mads' borderWidth={2} borderColor='$blue700' />
+      <Text color="black" size="2xl" marginTop={10}>Register</Text>
 
 
       <Box mt="$5" marginTop="$5" width="80%">
-        <Text color="white" size="xl" textAlign="justify">Name</Text>
-        <Input variant="outline" size="md" isDisabled={false}>
-          <InputField type="text" placeholder="Name" color="white" onChangeText={value => setFormData({
+        <Text color="black" size="xl" textAlign="justify">Name</Text>
+        <Input variant="outline" size="md" isDisabled={false} borderColor='$blue700'
+          borderWidth={2}>
+          <InputField type="text" placeholder="Name" color="black" onChangeText={value => setFormData({
             ...formData,
             name: value
           })} />
@@ -122,8 +123,9 @@ const Register = () => {
 
 
       <Box mt="$5" marginTop="$5" width="80%">
-        <Text color="white" size="xl" textAlign="justify">Email</Text>
-        <Input variant="outline" size="md" isDisabled={false}>
+        <Text color="black" size="xl" textAlign="justify">Email</Text>
+        <Input variant="outline" size="md" isDisabled={false} borderColor='$blue700'
+          borderWidth={2}>
           <InputField type="text" placeholder="Email" color="white" onChangeText={value => setFormData({
             ...formData,
             email: value
@@ -133,8 +135,9 @@ const Register = () => {
       </Box>
 
       <Box mt="$5" marginTop="$5" width="80%">
-        <Text color="white" size="xl" textAlign="justify">Password</Text>
-        <Input variant="outline" size="md" isDisabled={false}>
+        <Text color="black" size="xl" textAlign="justify">Password</Text>
+        <Input variant="outline" size="md" isDisabled={false} borderColor='$blue700'
+                    borderWidth={2}>
           <InputField type="password" placeholder="Password" color="white" onChangeText={value => setFormData({
             ...formData,
             password: value
@@ -144,15 +147,16 @@ const Register = () => {
 
 
       <Box mt="$5" marginTop="$5" width="80%">
-        <Text color="white" size="xl" textAlign="justify">Confirm password</Text>
-        <Input variant="outline" size="md" isDisabled={false}>
+        <Text color="black" size="xl" textAlign="justify">Confirm password</Text>
+        <Input variant="outline" size="md" isDisabled={false} borderColor='$blue700'
+                    borderWidth={2}>
           <InputField type="password" placeholder="Password" color="white" onChangeText={handleConfirmPasswordChange} />
         </Input>
       </Box>
 
 
       <Box marginTop="$1/6">
-        <Button action="primary" variant="solid" size="lg" isDisabled={!passwordMatch} bgColor="$cyan200" onPress={user_validation}>
+        <Button action="primary" variant="solid" size="lg" isDisabled={!passwordMatch} bgColor="$blue700" onPress={user_validation}>
           <ButtonText color='black'>Register</ButtonText>
         </Button>
       </Box>

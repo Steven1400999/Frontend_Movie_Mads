@@ -51,8 +51,11 @@ const CustomDrawerContent = ({ navigation }) => (
 
   <Box padding={10}>
     <Image alignSelf='center' marginTop={'$3'}
-      size="xl" borderRadius="$none"
+      size="xl" borderRadius={7}
       source={Logo} alt='Logo_Movie_Mads'
+      borderWidth={2} 
+      mt={40}
+      mb={20}
     />
     <Box
       backgroundColor='$secondary200'

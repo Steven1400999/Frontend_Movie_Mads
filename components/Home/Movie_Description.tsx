@@ -51,9 +51,9 @@ const Movie_Description = ({ route }) => {
 
 
   return (
-    <ScrollView width={'$full'} bg="$secondary950" height={'$full'}>
+    <ScrollView width={'$full'} bg="white" height={'$full'}>
 
-    <Box bg="$secondary950" height={'$full'}>
+    <Box bg="white" height={'$full'}>
 
       <Box flexDirection="row" alignItems="center" paddingTop={20}>
         <Image
@@ -61,6 +61,9 @@ const Movie_Description = ({ route }) => {
           alt={movie.title}
           height={250}
           width={175}
+          borderColor='black'
+          borderWidth={0.5}
+          hardShadow='5'
           source={{
             uri: movie.image
           }}
@@ -70,7 +73,7 @@ const Movie_Description = ({ route }) => {
 
         <Box flex={1}>
 
-          <Text color='white' size='2xl'>{movie.title}</Text>
+          <Text color='black' size='2xl'>{movie.title}</Text>
 
 
 
@@ -84,24 +87,24 @@ const Movie_Description = ({ route }) => {
           size="sm"
           m="$5"
           borderWidth={1}
-          borderColor="$borderLight300"
+          borderColor="$borderDark800"
           width="90%"
           maxWidth={640}
-          backgroundColor="$backgroundDark950"
+          backgroundColor="white"
         >
           <AccordionItem value="a">
             <AccordionHeader
-              backgroundColor="$backgroundDark950"
+              backgroundColor="white"
             >
               <AccordionTrigger>
                 {({ isExpanded }) => (
                   <>
                     {isExpanded ? (
-                      <AccordionIcon as={RemoveIcon} />
+                      <AccordionIcon as={RemoveIcon} color='black' />
                     ) : (
-                      <AccordionIcon as={AddIcon} color='white' />
+                      <AccordionIcon as={AddIcon} color='black' />
                     )}
-                    <AccordionTitleText ml="$3" color='white'>More info</AccordionTitleText>
+                    <AccordionTitleText ml="$3" color='black' >More info</AccordionTitleText>
                   </>
                 )}
               </AccordionTrigger>
@@ -113,29 +116,29 @@ const Movie_Description = ({ route }) => {
                 borderWidth={1}
 
                 borderColor="$borderDark700"
-                backgroundColor="$backgroundDark950"
+                backgroundColor="white"
 
               >
                 <AccordionItem value="b">
                   <AccordionHeader
-                    backgroundColor="$backgroundDark950" >
+                    backgroundColor="white" >
                     <AccordionTrigger>
                       {({ isExpanded }) => (
                         <>
                           {isExpanded ? (
-                            <AccordionIcon as={RemoveIcon} color='white' />
+                            <AccordionIcon as={RemoveIcon} color='black' />
                           ) : (
-                            <AccordionIcon as={AddIcon} color='white' />
+                            <AccordionIcon as={AddIcon} color='black' />
                           )}
-                          <AccordionTitleText ml="$3" color='white'>
+                          <AccordionTitleText ml="$3" color='black'>
                             Description
                           </AccordionTitleText>
                         </>
                       )}
                     </AccordionTrigger>
                   </AccordionHeader>
-                  <AccordionContent backgroundColor="$backgroundDark950" mt="$0">
-                    <AccordionContentText color='white' >
+                  <AccordionContent backgroundColor="white" mt="$0">
+                    <AccordionContentText color='black' >
                       {movie.description}
                     </AccordionContentText>
                   </AccordionContent>
@@ -147,27 +150,27 @@ const Movie_Description = ({ route }) => {
                 borderWidth={1}
                 mt="$5"
                 borderColor="$borderDark700"
-                backgroundColor="$backgroundDark950"
+                backgroundColor="white"
 
               >
                 <AccordionItem value="c">
                   <AccordionHeader
-                    backgroundColor="$backgroundDark950" >
+                    backgroundColor="white" >
                     <AccordionTrigger>
                       {({ isExpanded }) => (
                         <>
                           {isExpanded ? (
-                            <AccordionIcon as={RemoveIcon} color='white' />
+                            <AccordionIcon as={RemoveIcon} color='black' />
                           ) : (
-                            <AccordionIcon as={AddIcon} color='white' />
+                            <AccordionIcon as={AddIcon} color='black' />
                           )}
-                          <AccordionTitleText ml="$3" color='white'>Category</AccordionTitleText>
+                          <AccordionTitleText ml="$3" color='black'>Category</AccordionTitleText>
                         </>
                       )}
                     </AccordionTrigger>
                   </AccordionHeader>
-                  <AccordionContent backgroundColor="$backgroundDark950" mt="$0">
-                    <AccordionContentText color='white' >
+                  <AccordionContent backgroundColor="white" mt="$0">
+                    <AccordionContentText color='black' fontWeight='$bold'  >
                       {category}
                     </AccordionContentText>
                   </AccordionContent>
@@ -185,29 +188,29 @@ const Movie_Description = ({ route }) => {
               >
                 <AccordionItem value="d">
                   <AccordionHeader
-                    backgroundColor="$backgroundDark950" >
+                    backgroundColor="white" >
                     <AccordionTrigger>
                       {({ isExpanded }) => (
                         <>
                           {isExpanded ? (
-                            <AccordionIcon as={RemoveIcon} color='white' />
+                            <AccordionIcon as={RemoveIcon} color='black' />
                           ) : (
-                            <AccordionIcon as={AddIcon} color='white' />
+                            <AccordionIcon as={AddIcon} color='black' />
                           )}
-                          <AccordionTitleText ml="$3" color='white' >Language</AccordionTitleText>
+                          <AccordionTitleText ml="$3" color='black' >Language</AccordionTitleText>
                         </>
                       )}
                     </AccordionTrigger>
                   </AccordionHeader>
-                  <AccordionContent backgroundColor="$backgroundDark950" mt="$0">
+                  <AccordionContent backgroundColor="white" mt="$0">
                     <AccordionContentText>
-                      <Text fontWeight='$bold' color='white' > Language: </Text> <Text color='white'>{language}</Text>
+                      <Text fontWeight='$bold' color='black' > Language: </Text> <Text color='black'>{language}</Text>
                     </AccordionContentText>
                     <AccordionContentText>
-                      <Text fontWeight='$bold' color='white' > Dubbing: </Text> <Text color='white'>{dubbing}</Text>
+                      <Text fontWeight='$bold' color='black' > Dubbing: </Text> <Text color='black'>{dubbing}</Text>
                     </AccordionContentText>
                     <AccordionContentText>
-                      <Text fontWeight='$bold' color='white' > Subtitles: </Text> <Text color='white'>{subtitle}</Text>
+                      <Text fontWeight='$bold' color='black' > Subtitles: </Text> <Text color='black'>{subtitle}</Text>
                     </AccordionContentText>
 
                   </AccordionContent>
@@ -220,27 +223,27 @@ const Movie_Description = ({ route }) => {
                 mt="$5"
                 mb="$5"
                 borderColor="$borderDark700"
-                backgroundColor="$backgroundDark950"
+                backgroundColor="white"
 
               >
                 <AccordionItem value="c">
-                  <AccordionHeader backgroundColor="$backgroundDark950" >
+                  <AccordionHeader backgroundColor="white" >
                     <AccordionTrigger>
                       {({ isExpanded }) => (
                         <>
                           {isExpanded ? (
-                            <AccordionIcon as={RemoveIcon} color='white' />
+                            <AccordionIcon as={RemoveIcon} color='black' />
                           ) : (
-                            <AccordionIcon as={AddIcon} color='white' />
+                            <AccordionIcon as={AddIcon} color='black' />
                           )}
-                          <AccordionTitleText ml="$3" color='white' >Duration</AccordionTitleText>
+                          <AccordionTitleText ml="$3" color='black' >Duration</AccordionTitleText>
                         </>
                       )}
                     </AccordionTrigger>
                   </AccordionHeader>
-                  <AccordionContent backgroundColor="$backgroundDark950" mt="$0">
+                  <AccordionContent backgroundColor="white" mt="$0">
                     <AccordionContentText>
-                      <Text fontWeight='$bold' color='white' >{movie.duration}</Text>  <Text color='white' > Hours</Text>
+                      <Text fontWeight='$bold' color='black' >{movie.duration}</Text>  <Text color='black' > Hours</Text>
                     </AccordionContentText>
                   </AccordionContent>
                 </AccordionItem>

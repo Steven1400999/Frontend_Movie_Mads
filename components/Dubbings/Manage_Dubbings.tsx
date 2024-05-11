@@ -60,11 +60,11 @@ const Manage_Dubbings = () => {
 
   return (
 
-    <ScrollView width={'$full'} bg="$secondary950" height={'$full'}>
-      <Box bg="$secondary900" p="$5" padding={20} marginTop={0} height="100%" alignItems="center">
+    <ScrollView width={'$full'} bg="white" height={'$full'}>
+      <Box bg="white" p="$5" padding={20} marginTop={0} height="100%" alignItems="center">
 
 
-        <Button size="lg" variant="solid" action="primary" bgColor='$indigo400' isDisabled={false} isFocusVisible={false} onPress={handleStoreLanguage} >
+        <Button size="lg" variant="solid" action="primary" bgColor='$blue700' isDisabled={false} isFocusVisible={false} onPress={handleStoreLanguage} >
           <ButtonText>Store a Dubbing </ButtonText>
         </Button>
 

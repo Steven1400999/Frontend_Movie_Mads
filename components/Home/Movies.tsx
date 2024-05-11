@@ -40,7 +40,7 @@ const Movie = () => {
     );
     
     return (
-        <ScrollView width={'$full'} bg="$secondary950" height={'$full'}>
+        <ScrollView width={'$full'} bg="white" height={'$full'}>
 
         <Box  alignItems='center' >         
              <Box  alignItems='center' flexDirection='row' flexWrap='wrap' justifyContent='center' marginTop={20}>

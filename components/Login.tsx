@@ -90,14 +90,14 @@ const Login = () => {
     })
   }
   return (
-    <Box bg="$secondary950" p="$5" paddingTop={20} marginTop={0} height="100%" alignItems="center">
-      <Image size="xl" borderRadius="$xl" source={Logo} marginTop={40} alt='Logo_Movie_Mads' />
-      <Text color="white" size="2xl" marginTop={10}>Login</Text>
+    <Box bg="white" p="$5" paddingTop={20} marginTop={0} height="100%" alignItems="center">
+      <Image size="xl" borderRadius="$xl" source={Logo} marginTop={40} alt='Logo_Movie_Mads' borderWidth={2} borderColor='$blue700' />
+      <Text color="black" size="2xl" marginTop={10}>Login</Text>
 
       <Box mt="$5" marginTop="$5" width="80%">
-        <Text color="white" size="xl" textAlign="justify">Email</Text>
-        <Input variant="outline" size="md" isDisabled={false}>
-          <InputField type="text" placeholder="Email" color="white" onChangeText={value => setFormData({
+        <Text color="black" size="xl" textAlign="justify">Email</Text>
+        <Input variant="outline" size="md" isDisabled={false} borderWidth={2} borderColor='$blue700'>
+          <InputField type="text" placeholder="Email" color="black" onChangeText={value => setFormData({
             ...formData,
             email: value
           })} />
@@ -106,9 +106,9 @@ const Login = () => {
       </Box>
 
       <Box mt="$5" marginTop="$5" width="80%">
-        <Text color="white" size="xl" textAlign="justify">Password</Text>
-        <Input variant="outline" size="md" isDisabled={false}>
-          <InputField type={showPassword ? "text" : "password"} placeholder="Password" color="white" onChangeText={value => setFormData({
+        <Text color="black" size="xl" textAlign="justify">Password</Text>
+        <Input variant="outline" size="md" isDisabled={false} borderWidth={2} borderColor='$blue700'>
+          <InputField type={showPassword ? "text" : "password"} placeholder="Password" color="black" onChangeText={value => setFormData({
             ...formData,
             password: value
           })} />
@@ -131,8 +131,8 @@ const Login = () => {
 
       <Link onPress={handleNavigateToRegister} marginTop="$72">
         <Box flexDirection='row'>
-          <Text color="$primary400" size="sm" textAlign="justify"> Don't have an account? </Text>
-          <LinkText color="$primary400" size="sm" textAlign="justify">Sign up here</LinkText>
+          <Text color="$primary500" size="md" textAlign="justify"> Don't have an account? </Text>
+          <LinkText color="$primary400" size="md" textAlign="justify">Sign up here</LinkText>
         </Box>
       </Link>
 
