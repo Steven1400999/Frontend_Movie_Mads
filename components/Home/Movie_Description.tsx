@@ -6,6 +6,7 @@ import { RemoveIcon } from '@gluestack-ui/themed';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import Card_Schedules from './Card_Schedules';
+import { ScrollView } from '@gluestack-ui/themed';
 
 const Movie_Description = ({ route }) => {
   const { movie } = route.params;
@@ -49,13 +50,9 @@ const Movie_Description = ({ route }) => {
   }, []);
 
 
-
-
-
-
-  console.log("Movie.routes: ", { movie });
-
   return (
+    <ScrollView width={'$full'} bg="$secondary950" height={'$full'}>
+
     <Box bg="$secondary950" height={'$full'}>
 
       <Box flexDirection="row" alignItems="center" paddingTop={20}>
@@ -255,12 +252,14 @@ const Movie_Description = ({ route }) => {
       </Box>
 
       <Box>
-          <Card_Schedules />
+          <Card_Schedules movie_id={movie.id}/>
        
       </Box>
 
 
     </Box>
+
+    </ScrollView>
   );
 };
 

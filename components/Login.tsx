@@ -59,8 +59,8 @@ const Login = () => {
       })
       .then((response) => {
         console.log("response");
-        console.log(response);
         AsyncStorage.setItem('token', response.data.token);
+        AsyncStorage.setItem('user_id',response.data.id.toString());
         navigation.navigate('Root');
 
       })

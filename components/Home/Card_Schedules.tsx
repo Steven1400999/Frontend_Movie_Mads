@@ -8,50 +8,71 @@ import { useNavigation } from '@react-navigation/native';
 import { IpAddress } from '../IpAddress';
 import { ButtonIcon } from '@gluestack-ui/themed';
 import { EditIcon } from '@gluestack-ui/themed';
+import { ScrollView } from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native';
 
-const Card_Schedules = ({ data }) => {
-    const [token, setToken] = useState(null);
-    const navigation =useNavigation();
+const Card_Schedules = ({ movie_id }) => {
+  const [token, setToken] = useState(null);
+  const navigation = useNavigation();
+  const [schedules, setSchedules] = useState([]);
+  const movie = movie_id;
 
-    useEffect(() => {
-      const fetchToken = async () => {
-        try {
-          const token = await AsyncStorage.getItem('token');
-          if (token !== null) {
-            setToken(token);
-          }
-        } catch (error) {
-          console.error('Error al obtener el token:', error);
+  useEffect(() => {
+    console.log("movieid: ", movie_id);
+    const fetchToken = async () => {
+      try {
+        const token = await AsyncStorage.getItem('token');
+        if (token !== null) {
+          const response = await axios.post(
+            `${IpAddress}/Backend_Movie_Mads/public/api/schedule_show`,
+            { movie_id: movie },
+            {
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+          setSchedules(response.data);
+          console.log("Esta es al respuesta mf: ", response.data);
+          console.log("Schedule id: ", schedules);
+
+
         }
-      };
-  
-      fetchToken();
-    }, []);
-  
-   
-    const handleNavigateUpdate = () => {
-      navigation.navigate('Update_Category', {
-        id: data.id,
-        category: data.category
-      });
+      } catch (error) {
+        console.error('Error al obtener el token:', error);
+      }
     };
 
-    return (
-        
-        <Card width="$full" padding={10} variant="elevated" borderRadius="$2xl">
-        <Box width="$full" padding={10} display="flex" flexDirection="row" justifyContent="space-between">
-            <Text size='lg' color='black' >hola</Text>
+    fetchToken();
+  }, []);
 
-            <Box display="flex" flexDirection="row" alignItems="center">
-                    <Button size="sm" variant="solid" action="primary" bgColor='$info500' marginRight={12} onPress={handleNavigateUpdate} isDisabled={false} isFocusVisible={false}>
-                        <ButtonText></ButtonText>
-                        <ButtonIcon as={EditIcon} />
-                    </Button>
-                   
-                </Box>
-        </Box>
-    </Card>
-    );
+  const handleSeatsShow = (schedule_id) => {
+console.log("Id del eschedule:",schedule_id);
+
+    navigation.navigate('Seats', { schedule_id, movie_id });
+  };
+
+  return (
+
+    <Box bgColor='$secondary0' padding={10} borderRadius={'$2xl'} ml={5} mr={5}  >
+      {schedules.length > 0 ? (
+        schedules.map((schedule) => (
+          <TouchableOpacity key={schedule.id} onPress={() => handleSeatsShow(schedule.id)}>
+            <Box key={schedule.id} bgColor='$blue700' borderColor='$error100' borderWidth={'$1'} borderRadius={'$2xl'} width={300} padding={10} mb={9}>
+              <Text color='white'>ID: {schedule.id}</Text>
+              <Text color='white'>Start Time: {schedule.start_time}</Text>
+              <Text color='white'>Room: {schedule.room}</Text>
+            </Box>
+          </TouchableOpacity>
+        ))
+      ) : (
+        <Text>No schedules available for this movie.</Text>
+      )}
+    </Box>
+
+
+  );
 };
 
 export default Card_Schedules;

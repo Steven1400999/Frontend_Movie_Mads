@@ -26,6 +26,7 @@ import Store_Category from './components/Categories/Store_Category';
 import Manage_Movies from './components/Administrator/Movies/Manage_Movies';
 import Update_Movie from './components/Administrator/Movies/Update_Movie';
 import Movie_Description from './components/Home/Movie_Description';
+import Seats from './components/Home/Seats';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -133,6 +134,7 @@ export default function App() {
 
 
           <Stack.Screen name="Movie_Description" component={Movie_Description} />
+          <Stack.Screen name="Seats" component={Seats} />
 
         </Stack.Navigator>
 
