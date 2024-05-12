@@ -68,7 +68,7 @@ const Register = () => {
       .then((response) => {
         console.log("response");
         console.log(response);
-        navigation.navigate('Movies');
+        navigation.navigate('Login');
 
       })
       .catch((error) => {
@@ -126,7 +126,7 @@ const Register = () => {
         <Text color="black" size="xl" textAlign="justify">Email</Text>
         <Input variant="outline" size="md" isDisabled={false} borderColor='$blue700'
           borderWidth={2}>
-          <InputField type="text" placeholder="Email" color="white" onChangeText={value => setFormData({
+          <InputField type="text" placeholder="Email" color="black" onChangeText={value => setFormData({
             ...formData,
             email: value
           })} />
@@ -138,7 +138,7 @@ const Register = () => {
         <Text color="black" size="xl" textAlign="justify">Password</Text>
         <Input variant="outline" size="md" isDisabled={false} borderColor='$blue700'
                     borderWidth={2}>
-          <InputField type="password" placeholder="Password" color="white" onChangeText={value => setFormData({
+          <InputField type="password" placeholder="Password" color="black" onChangeText={value => setFormData({
             ...formData,
             password: value
           })} />
@@ -150,14 +150,14 @@ const Register = () => {
         <Text color="black" size="xl" textAlign="justify">Confirm password</Text>
         <Input variant="outline" size="md" isDisabled={false} borderColor='$blue700'
                     borderWidth={2}>
-          <InputField type="password" placeholder="Password" color="white" onChangeText={handleConfirmPasswordChange} />
+          <InputField type="password" placeholder="Password" color="black" onChangeText={handleConfirmPasswordChange} />
         </Input>
       </Box>
 
 
       <Box marginTop="$1/6">
         <Button action="primary" variant="solid" size="lg" isDisabled={!passwordMatch} bgColor="$blue700" onPress={user_validation}>
-          <ButtonText color='black'>Register</ButtonText>
+          <ButtonText color='white'>Register</ButtonText>
         </Button>
       </Box>
 

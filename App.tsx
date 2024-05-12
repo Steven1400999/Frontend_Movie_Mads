@@ -28,6 +28,8 @@ import Update_Movie from './components/Administrator/Movies/Update_Movie';
 import Movie_Description from './components/Home/Movie_Description';
 import Seats from './components/Home/Seats';
 import Create_Movie_Function from './components/Administrator/Create_Movie_Function';
+import { useEffect, useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -49,8 +51,18 @@ function Root() {
   );
 }
 
-const CustomDrawerContent = ({ navigation }) => (
+function CustomDrawerContent({ navigation }) {
+  const [userRole, setUserRole] = useState(null);
 
+  useEffect(() => {
+    async function fetchUserRole() {
+      const role = await AsyncStorage.getItem('role');
+      setUserRole(role);
+    }
+    fetchUserRole();
+  }, []);
+
+  return (
   <Box padding={10}>
     <Image alignSelf='center' marginTop={'$3'}
       size="xl" borderRadius={7}
@@ -75,8 +87,9 @@ const CustomDrawerContent = ({ navigation }) => (
 
       </TouchableOpacity>
     </Box>
-
-    <Box backgroundColor='$secondary200' borderRadius={'$xl'} marginBottom={8}>
+    {userRole === 'administrator' && (
+        <>
+        <Box backgroundColor='$secondary200' borderRadius={'$xl'} marginBottom={8}>
       <TouchableOpacity onPress={() => navigation.navigate('Create_Movie_Function')}>
         <Text fontSize={'$xl'} padding={13} >Create a movie function</Text>
       </TouchableOpacity>
@@ -112,7 +125,8 @@ const CustomDrawerContent = ({ navigation }) => (
       </TouchableOpacity>
     </Box>
 
-    
+    </>
+      )}
     <Box backgroundColor='$secondary200' borderRadius={'$xl'} marginBottom={8}>
       <TouchableOpacity onPress={() => navigation.navigate('Login')}>
         <Text fontSize={'$xl'} padding={13} >Logout</Text>
@@ -123,6 +137,11 @@ const CustomDrawerContent = ({ navigation }) => (
 
   </Box>
 );
+}
+
+
+
+
 
 export default function App() {
   return (
@@ -154,15 +173,3 @@ export default function App() {
 
   );
 }
-
-const Home = () => {
-  return <Container />;
-};
-
-
-const Container = () => {
-  return (
-
-    <App />
-  );
-};
