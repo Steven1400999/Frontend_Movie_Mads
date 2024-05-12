@@ -10,7 +10,7 @@ import { ScrollView } from '@gluestack-ui/themed';
 import { Alert, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
-import QRCode from 'react-native-qrcode-svg';  // Importa QRCode
+import QRCode from 'react-native-qrcode-svg';  
 import { AlertDialog } from '@gluestack-ui/themed';
 import { AlertDialogContent } from '@gluestack-ui/themed';
 import { AlertDialogHeader } from '@gluestack-ui/themed';
@@ -143,12 +143,15 @@ const Seats = ({ route }) => {
         }
         const scheduleInfo = schedules[0] || {};
 
+        const selectedSeatNumbers = seats.filter(seat => selectedSeats.includes(seat.id))
+        .map(seat => seat.seat_number)
+        .join(', ');
 
         const qrDataTemp = JSON.stringify({
             Movie: movie.title,
             Schedule: scheduleInfo.start_time,
             Room: scheduleInfo.room,
-            Seats: selectedSeats.join(', ')
+            Seats: selectedSeatNumbers 
         });
 
         try {

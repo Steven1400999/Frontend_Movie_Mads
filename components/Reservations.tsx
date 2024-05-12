@@ -13,50 +13,56 @@ const Reservations = () => {
   const navigation = useNavigation();
   const [reservations, setReservations] = useState([]);
 
-
-  const fetchReservations = async () => {
-    try {
-      const token = await AsyncStorage.getItem('token');
-      if (token !== null) {
-      }
-      const response = await axios.get(`${IpAddress}/Backend_Movie_Mads/public/api/reservation_show`, {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setReservations(response.data);
-      console.log(response.data);
-    }
-    catch (error) {
-      console.error('Something went wrong:', error);
-    }
-  };
-
-
-
   useEffect(() => {
+    const fetchReservations = async () => {
+        try {
+            const token = await AsyncStorage.getItem('token');
+            const user_id = await AsyncStorage.getItem('user_id');
+
+            if (token !== null) {
+                const response = await axios.post(
+                    `${IpAddress}/Backend_Movie_Mads/public/api/reservation_show`,
+                    { user_id: user_id },
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
+                );
+                const sortedReservations = response.data.sort((a, b) => {
+                    // Suponiendo que cada reserva tiene un campo 'created_at' que es un string de fecha
+                    return new Date(b.created_at) - new Date(a.created_at);
+                  });
+                  setReservations(sortedReservations);
+
+                console.log("this are reservations: ", response.data);
+
+            }
+        } catch (error) {
+            console.error('Error getting reservations:', error);
+        }
+    };
+
     fetchReservations();
-  }, []);
 
 
+}, []);
 
-  const handleStoreLanguage = () => {
-    navigation.navigate('Store_Subtitle');
-  };
 
   return (
-
     <ScrollView width={'$full'} bg="white" height={'$full'}>
-      <Box bg="white" p="$5" padding={20} marginTop={0} height="100%" alignItems="center">
-
-
-      <Button size="lg" variant="solid" action="primary" bgColor='$blue700' isDisabled={false} isFocusVisible={false} onPress={handleStoreLanguage} >
-          <ButtonText>Store a Subtitle </ButtonText>
-        </Button>
-
-      </Box>
-
+      {reservations.map((reservation, index) => (
+        <Box key={index}  padding={10} borderWidth={2} borderColor='$blue700' ml={15} mr={15} mt={10} mb={5} borderRadius={10}>
+          <Text size color='black' >Movie: {JSON.parse(reservation.qr_code).Movie}</Text>
+          <Text color='black' >Schedule: {JSON.parse(reservation.qr_code).Schedule}</Text>
+          <Text color='black'>Room: {JSON.parse(reservation.qr_code).Room}</Text>
+          <Text color='black'>Seats: {JSON.parse(reservation.qr_code).Seats}</Text>
+          <Box alignItems='center'>
+            <QRCode value={reservation.qr_code} size={200}  />
+          </Box>
+        </Box>
+      ))}
     </ScrollView>
   );
 };
