@@ -27,6 +27,7 @@ import Manage_Movies from './components/Administrator/Movies/Manage_Movies';
 import Update_Movie from './components/Administrator/Movies/Update_Movie';
 import Movie_Description from './components/Home/Movie_Description';
 import Seats from './components/Home/Seats';
+import Create_Movie_Function from './components/Administrator/Create_Movie_Function';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -42,6 +43,7 @@ function Root() {
       <Drawer.Screen name="Manage_Dubbings" component={Manage_Dubbings} />
       <Drawer.Screen name="Manage_Categories" component={Manage_Categories} />
       <Drawer.Screen name="Manage_Movies" component={Manage_Movies} />
+      <Drawer.Screen name="Create_Movie_Function" component={Create_Movie_Function} />
 
     </Drawer.Navigator>
   );
@@ -71,6 +73,12 @@ const CustomDrawerContent = ({ navigation }) => (
           Movies
         </Text>
 
+      </TouchableOpacity>
+    </Box>
+
+    <Box backgroundColor='$secondary200' borderRadius={'$xl'} marginBottom={8}>
+      <TouchableOpacity onPress={() => navigation.navigate('Create_Movie_Function')}>
+        <Text fontSize={'$xl'} padding={13} >Create a movie function</Text>
       </TouchableOpacity>
     </Box>
 
@@ -122,7 +130,7 @@ export default function App() {
       <GluestackUIProvider config={config}>
         <Stack.Navigator>
           <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
-          <Stack.Screen name="Register" component={Register} />
+          <Stack.Screen name="Register" component={Register}  />
           <Stack.Screen name="Root" component={Root} options={{ headerShown: false }} />
           <Stack.Screen name="Update_Languages" component={UpdateLanguages} />
           <Stack.Screen name="Store_Language" component={Store_Language} />

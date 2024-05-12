@@ -33,11 +33,12 @@ const Card_Schedules = ({ movie_id }) => {
               },
             }
           );
-          setSchedules(response.data);
-          console.log("Esta es al respuesta mf: ", response.data);
-          console.log("Schedule id: ", schedules);
-
-
+          const now = new Date();
+          const futureSchedules = response.data.filter(schedule => {
+            const scheduleDate = new Date(schedule.start_time);
+            return scheduleDate >= now;
+          });
+          setSchedules(futureSchedules);
         }
       } catch (error) {
         console.error('Error al obtener el token:', error);

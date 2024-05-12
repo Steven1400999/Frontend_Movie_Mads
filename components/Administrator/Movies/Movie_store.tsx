@@ -205,7 +205,7 @@ const Movie_store = () => {
                 <Box mt="$5" marginTop="$5" width="80%">
                     <Text color="black" size="xl" textAlign="justify">Title</Text>
                     <Input variant="outline" size="md" isDisabled={false} borderColor='$blue700' borderWidth={2}>
-                        <InputField id='title' type="text" placeholder="Title" color="white"
+                        <InputField id='title' type="text" placeholder="Title" color="black"
                             onChangeText={value => setFormData({
                                 ...formData,
                                 title: value
