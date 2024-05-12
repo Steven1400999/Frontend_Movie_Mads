@@ -14,6 +14,16 @@ const Reservations = () => {
   const [reservations, setReservations] = useState([]);
 
   useEffect(() => {
+
+
+    const unsubscribe = navigation.addListener('focus', () => {
+        fetchReservations();
+    });
+
+    return unsubscribe;
+}, [navigation]);
+
+
     const fetchReservations = async () => {
         try {
             const token = await AsyncStorage.getItem('token');
@@ -43,11 +53,6 @@ const Reservations = () => {
             console.error('Error getting reservations:', error);
         }
     };
-
-    fetchReservations();
-
-
-}, []);
 
 
   return (
