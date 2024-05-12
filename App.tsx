@@ -30,6 +30,7 @@ import Seats from './components/Home/Seats';
 import Create_Movie_Function from './components/Administrator/Create_Movie_Function';
 import { useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Reservations from './components/Reservations';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -46,6 +47,7 @@ function Root() {
       <Drawer.Screen name="Manage_Categories" component={Manage_Categories} />
       <Drawer.Screen name="Manage_Movies" component={Manage_Movies} />
       <Drawer.Screen name="Create_Movie_Function" component={Create_Movie_Function} />
+      <Drawer.Screen name="Reservations" component={Reservations} />
 
     </Drawer.Navigator>
   );
@@ -87,6 +89,8 @@ function CustomDrawerContent({ navigation }) {
 
       </TouchableOpacity>
     </Box>
+
+
     {userRole === 'administrator' && (
         <>
         <Box backgroundColor='$secondary200' borderRadius={'$xl'} marginBottom={8}>
@@ -127,6 +131,26 @@ function CustomDrawerContent({ navigation }) {
 
     </>
       )}
+
+
+<Box
+      backgroundColor='$secondary200'
+      borderRadius={'$xl'}
+      marginBottom={8}
+     >
+
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Reservations')}>
+
+        <Text fontSize={'$xl'}
+          padding={13} >
+          Reservations
+        </Text>
+
+      </TouchableOpacity>
+    </Box>
+
+
     <Box backgroundColor='$secondary200' borderRadius={'$xl'} marginBottom={8}>
       <TouchableOpacity onPress={() => navigation.navigate('Login')}>
         <Text fontSize={'$xl'} padding={13} >Logout</Text>
