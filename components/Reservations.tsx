@@ -41,7 +41,6 @@ const Reservations = () => {
                     }
                 );
                 const sortedReservations = response.data.sort((a, b) => {
-                    // Suponiendo que cada reserva tiene un campo 'created_at' que es un string de fecha
                     return new Date(b.created_at) - new Date(a.created_at);
                   });
                   setReservations(sortedReservations);
