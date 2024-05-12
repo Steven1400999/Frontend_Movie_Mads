@@ -74,7 +74,7 @@ function CustomDrawerContent({ navigation }) {
       mb={20}
     />
     <Box
-      backgroundColor='$secondary200'
+      backgroundColor='$blue700'
       borderRadius={'$xl'}
       marginBottom={8}
      >
@@ -83,7 +83,8 @@ function CustomDrawerContent({ navigation }) {
         onPress={() => navigation.navigate('Movies')}>
 
         <Text fontSize={'$xl'}
-          padding={13} >
+          padding={13}
+          color='white' >
           Movies
         </Text>
 
@@ -93,39 +94,39 @@ function CustomDrawerContent({ navigation }) {
 
     {userRole === 'administrator' && (
         <>
-        <Box backgroundColor='$secondary200' borderRadius={'$xl'} marginBottom={8}>
+        <Box backgroundColor='$blue700' borderRadius={'$xl'} marginBottom={8}>
       <TouchableOpacity onPress={() => navigation.navigate('Create_Movie_Function')}>
-        <Text fontSize={'$xl'} padding={13} >Create a movie function</Text>
+        <Text color='white' fontSize={'$xl'} padding={13} >Create a movie function</Text>
       </TouchableOpacity>
     </Box>
 
-    <Box backgroundColor='$secondary200' borderRadius={'$xl'} marginBottom={8}>
+    <Box backgroundColor='$blue700' borderRadius={'$xl'} marginBottom={8}>
       <TouchableOpacity onPress={() => navigation.navigate('Manage_Movies')}>
-        <Text fontSize={'$xl'} padding={13} >Manage Movies</Text>
+        <Text color='white' fontSize={'$xl'} padding={13} >Manage Movies</Text>
       </TouchableOpacity>
     </Box>
 
-    <Box backgroundColor='$secondary200' borderRadius={'$xl'} marginBottom={8}>
+    <Box backgroundColor='$blue700' borderRadius={'$xl'} marginBottom={8}>
       <TouchableOpacity onPress={() => navigation.navigate('Manage_Languages')}>
-        <Text fontSize={'$xl'} padding={13} >Manage Languages</Text>
+        <Text color='white' fontSize={'$xl'} padding={13} >Manage Languages</Text>
       </TouchableOpacity>
     </Box>
 
-    <Box backgroundColor='$secondary200' borderRadius={'$xl'} marginBottom={8}>
+    <Box backgroundColor='$blue700' borderRadius={'$xl'} marginBottom={8}>
       <TouchableOpacity onPress={() => navigation.navigate('Manage_Subtitles')}>
-        <Text fontSize={'$xl'} padding={13} >Manage Subtitles</Text>
+        <Text color='white' fontSize={'$xl'} padding={13} >Manage Subtitles</Text>
       </TouchableOpacity>
     </Box>
 
-    <Box backgroundColor='$secondary200' borderRadius={'$xl'} marginBottom={8}>
+    <Box backgroundColor='$blue700' borderRadius={'$xl'} marginBottom={8}>
       <TouchableOpacity onPress={() => navigation.navigate('Manage_Dubbings')}>
-        <Text fontSize={'$xl'} padding={13} >Manage Dubbings</Text>
+        <Text color='white' fontSize={'$xl'} padding={13} >Manage Dubbings</Text>
       </TouchableOpacity>
     </Box>
 
-    <Box backgroundColor='$secondary200' borderRadius={'$xl'} marginBottom={8}>
+    <Box backgroundColor='$blue700' borderRadius={'$xl'} marginBottom={8}>
       <TouchableOpacity onPress={() => navigation.navigate('Manage_Categories')}>
-        <Text fontSize={'$xl'} padding={13} >Manage Categories</Text>
+        <Text color='white' fontSize={'$xl'} padding={13} >Manage Categories</Text>
       </TouchableOpacity>
     </Box>
 
@@ -134,7 +135,7 @@ function CustomDrawerContent({ navigation }) {
 
 
 <Box
-      backgroundColor='$secondary200'
+      backgroundColor='$blue700'
       borderRadius={'$xl'}
       marginBottom={8}
      >
@@ -143,7 +144,7 @@ function CustomDrawerContent({ navigation }) {
         onPress={() => navigation.navigate('Reservations')}>
 
         <Text fontSize={'$xl'}
-          padding={13} >
+          padding={13} color='white' >
           Reservations
         </Text>
 
@@ -151,9 +152,9 @@ function CustomDrawerContent({ navigation }) {
     </Box>
 
 
-    <Box backgroundColor='$secondary200' borderRadius={'$xl'} marginBottom={8}>
+    <Box backgroundColor='$blue700' borderRadius={'$xl'} marginBottom={8}>
       <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-        <Text fontSize={'$xl'} padding={13} >Logout</Text>
+        <Text fontSize={'$xl'} padding={13} color='white' >Logout</Text>
       </TouchableOpacity>
     </Box>
 
