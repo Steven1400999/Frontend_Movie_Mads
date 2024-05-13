@@ -67,7 +67,7 @@ const CardMoviesAdmin = ({ data }) => {
 
             }
         } catch (error) {
-            console.error('Error deleting language:', error);
+            console.error('Error deleting movie:', error);
         }
     };
 

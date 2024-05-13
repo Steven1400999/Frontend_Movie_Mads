@@ -41,7 +41,7 @@ const Card_Schedules = ({ movie_id }) => {
           setSchedules(futureSchedules);
         }
       } catch (error) {
-        console.error('Error al obtener el token:', error);
+        console.error('Error getting token:', error);
       }
     };
 

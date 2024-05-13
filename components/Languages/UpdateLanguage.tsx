@@ -27,7 +27,7 @@ const UpdateLanguage = ({ route }) => {
                     setToken(token);
                 }
             } catch (error) {
-                console.error('Error al obtener el token:', error);
+                console.error('Error getting the token:', error);
             }
         };
 

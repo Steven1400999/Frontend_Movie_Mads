@@ -25,7 +25,7 @@ const Movie = () => {
                 setMovies(response.data);
             }
         } catch (error) {
-            console.error('Error al obtener las películas:', error);
+            console.error('Error getting movies:', error);
         }
     };
 

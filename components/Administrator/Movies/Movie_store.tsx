@@ -50,7 +50,7 @@ const Movie_store = () => {
                             setCategories(response.data);
                         })
                         .catch(error => {
-                            console.error('Error al obtener las películas:', error);
+                            console.error('Error getting movies:', error);
                         });
                 }
             } catch (error) {
@@ -76,7 +76,7 @@ const Movie_store = () => {
                             setDubbings(response.data);
                         })
                         .catch(error => {
-                            console.error('Error al obtener las películas:', error);
+                            console.error('Error getting data:', error);
                         });
                 }
             } catch (error) {
@@ -101,7 +101,7 @@ const Movie_store = () => {
                             setLanguages(response.data);
                         })
                         .catch(error => {
-                            console.error('Error al obtener las películas:', error);
+                            console.error('Error getting data:', error);
                         });
                 }
             } catch (error) {
@@ -127,7 +127,7 @@ const Movie_store = () => {
                             setSubtitles(response.data);
                         })
                         .catch(error => {
-                            console.error('Error al obtener las películas:', error);
+                            console.error('Error getting data:', error);
                         });
                 }
             } catch (error) {
@@ -162,7 +162,7 @@ const Movie_store = () => {
 
                     })
                     .catch(error => {
-                        console.error('Error al obtener las películas:', error);
+                        console.error('Error storing a movie:', error);
                     });
             }
         } catch (error) {

@@ -25,7 +25,7 @@ const CardSubtitles = ({ data }) => {
             setToken(token);
           }
         } catch (error) {
-          console.error('Error al obtener el token:', error);
+          console.error('Error getting the token:', error);
         }
       };
   
@@ -50,7 +50,7 @@ const CardSubtitles = ({ data }) => {
 
         }
       } catch (error) {
-        console.error('Error al eliminar el idioma:', error);
+        console.error('Error deleting the language:', error);
       }
     };
 

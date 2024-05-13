@@ -37,7 +37,7 @@ const Manage_Lnaguages = () => {
       setLanguages(response.data);
     }
     catch (error) {
-      console.error('Error al obtener las películas:', error);
+      console.error('Error getting the language:', error);
     }
   };
 

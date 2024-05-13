@@ -51,7 +51,7 @@ const Seats = ({ route }) => {
 
                 }
             } catch (error) {
-                console.error('Error al obtener el token:', error);
+                console.error('Error getting data:', error);
             }
         };
 
@@ -78,7 +78,7 @@ const Seats = ({ route }) => {
 
                 }
             } catch (error) {
-                console.error('Error al obtener el token:', error);
+                console.error('Error getting data:', error);
             }
         };
 
@@ -104,7 +104,7 @@ const Seats = ({ route }) => {
 
                 }
             } catch (error) {
-                console.error('Error al obtener el token:', error);
+                console.error('Error getting data:', error);
             }
         };
 

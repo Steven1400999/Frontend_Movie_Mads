@@ -65,7 +65,7 @@ const Movie_update = ({ route }) => {
                             setCategories(response.data);
                         })
                         .catch(error => {
-                            console.error('Error al obtener las películas:', error);
+                            console.error('Error getting data:', error);
                         });
                 }
             } catch (error) {
@@ -91,7 +91,7 @@ const Movie_update = ({ route }) => {
                             setDubbings(response.data);
                         })
                         .catch(error => {
-                            console.error('Error al obtener las películas:', error);
+                            console.error('Error getting data:', error);
                         });
                 }
             } catch (error) {
@@ -116,7 +116,7 @@ const Movie_update = ({ route }) => {
                             setLanguages(response.data);
                         })
                         .catch(error => {
-                            console.error('Error al obtener las películas:', error);
+                            console.error('Error getting data:', error);
                         });
                 }
             } catch (error) {
@@ -142,7 +142,7 @@ const Movie_update = ({ route }) => {
                             setSubtitles(response.data);
                         })
                         .catch(error => {
-                            console.error('Error al obtener las películas:', error);
+                            console.error('Error getting data:', error);
                         });
                 }
             } catch (error) {
@@ -175,7 +175,7 @@ const Movie_update = ({ route }) => {
 
                     })
                     .catch(error => {
-                        console.error('Error al obtener las películas:', error);
+                        console.error('Error updating:', error);
                     });
             }
         } catch (error) {
